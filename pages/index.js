@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import ArticleList from '../components/ArticleList'
 import styles from '../styles/Home.module.css'
 
 export default function Home({ articles }) {
@@ -11,11 +12,7 @@ export default function Home({ articles }) {
         <meta name="description" content="Student Performence Monitor -3" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {
-        articles.map((article, index) => (
-          <h3 key={index}>{article.title}</h3>
-        ))
-      }
+      <ArticleList articles={articles} />
     </div>
   )
 }
