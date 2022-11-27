@@ -1,0 +1,26 @@
+/* add navbar style */
+.nav {
+    height: 50px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
