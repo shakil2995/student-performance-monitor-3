@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     return (<>
         <Meta />
         <div><Nav /></div>
-        <div><Header /></div>
+        {/* <div><Header /></div> */}
         <div className={styles.container}>
             <main className={styles.main}>
                 {children}

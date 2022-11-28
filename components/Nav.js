@@ -19,6 +19,9 @@ const Nav = ({ children }) => {
                     <Link href="/outline">Outline</Link>
                 </li>
                 <li>
+                    <Link href="/membersonly">secrets</Link>
+                </li>
+                <li>
                     <Link href="/about">About</Link>
                 </li>
             </ul>
