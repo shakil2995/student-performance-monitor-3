@@ -18,9 +18,27 @@
 
 .nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: rgb(252, 252, 252);
+    padding: 8px;
+    margin: 8px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav ul li a:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgba(219, 219, 219, 0.986);
     padding: 10px;
     margin: 10px;
     border-radius: 5px;
     transition: all 0.3s ease;
+}
+
+.colorRed {
+    color: rgb(207, 66, 66);
+}
+
+.colorGreen {
+    color: rgb(70, 176, 84);
 }
