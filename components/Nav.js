@@ -17,7 +17,7 @@ const Nav = ({ children }) => {
             </ul>
             <ul className={navStyles.rightAlign}>
                 {user ? <li> <Link href={`/user/${user.nickname}`}>{user.nickname}</Link></li> : null}
-                {user ? <li > <Link href="/api/auth/logout"><span className={navStyles.colorRed}>logout</span></Link></li> : <li > <Link href="/api/auth/login"><span className={[navStyles.colorGreen, navStyles.colorGreenBtn]}>login</span></Link></li>}
+                {user ? <li > <Link href="/api/auth/logout"><span className={navStyles.colorRed}>logout</span></Link></li> : <li > <Link href="/api/auth/login"><span className={navStyles.colorGreen}>login</span></Link></li>}
             </ul>
         </nav>
     )

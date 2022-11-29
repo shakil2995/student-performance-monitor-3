@@ -41,7 +41,7 @@
 }
 
 .colorRed {
-    color: tomato;
+    color: rgb(248, 56, 22);
 }
 
 .colorRed :hover {
@@ -54,7 +54,7 @@
 }
 
 .colorGreen {
-    color: aquamarine;
+    color: rgb(1, 187, 41);
 }
 
 .colorGreenBtn {

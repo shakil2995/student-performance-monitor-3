@@ -5,7 +5,7 @@ const User = ({ children }) => {
     const { user, error, isLoading } = useUser();
     return (
         <div>
-            <h1>Welcome {user.nickname}</h1>
+            <h1>Welcome {user.nickname}!</h1>
         </div>
     )
 }

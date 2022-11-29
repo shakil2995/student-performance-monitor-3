@@ -19,7 +19,7 @@ export default function Home({ articles }) {
     return (
       <div className={styles.container}>
         {/* <ArticleList articles={articles} /> */}
-        <h1>Welcome {user.name}!</h1>
+        <h1>Welcome {user.nickname}!</h1>
         {/* <a href="/api/auth/logout">Logout</a> */}
       </div>
     )
@@ -28,7 +28,7 @@ export default function Home({ articles }) {
       <div className={styles.container}>
         <h1>Welcome User !! Please Login/Signup to continue.</h1>
         <a href='http://localhost:3000/api/auth/login' className={styles.loginContainer}>Login</a>
-        <a href='https://dev-ynqt5bss8k672dvz.us.auth0.com/u/signup?state=hKFo2SBkSFowM1lwaFN6VE9PZlNiUHl5aUhxTzM0YlRLVDRTWKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIEZDeFJfeVZVMll1Tmw0dUllWDVoUlRFX3NsMkxJYUcyo2NpZNkgbFdwR0lUQmJ2c1RkWlFqSG9Ld3BRb0hLVnJzTEJLRng' className={styles.signupContainer}>Signup</a>
+        <a href='http://localhost:3000/api/auth/login' className={styles.signupContainer}>Signup</a>
       </div>
     )
   }
