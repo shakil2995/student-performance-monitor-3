@@ -116,14 +116,64 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
+}
+
+
+.loginContainer {
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 5px;
+  /* border: 1px solid #858585; */
+  /* background-color: rgba(255, 255, 255, 0.134); */
+  background-color: rgb(1, 187, 41);
+  color: rgb(255, 248, 248);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+}
+
+.loginContainer:hover {
+  font-size: 1.4rem;
+  padding: 5px;
+  margin: 5px;
+  text-decoration: none;
+  color: rgb(1, 187, 41);
+  background-color: rgba(219, 219, 219, 0.986);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.signupContainer {
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 5px;
+  /* border: 1px solid #858585;
+  background-color: rgba(255, 255, 255, 0.134); */
+  background-color: rgb(248, 56, 22);
+  color: rgb(252, 252, 252);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+}
+
+.signupContainer:hover {
+  font-size: 1.4rem;
+  padding: 5px;
+  margin: 5px;
+  text-decoration: none;
+  color: rgb(248, 56, 22);
+  background-color: rgba(219, 219, 219, 0.986);
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
