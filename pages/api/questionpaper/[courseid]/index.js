@@ -7,8 +7,8 @@ export default async function SecretRoute(req, res) {
 
     if (req.method === 'GET') {
         // get url path
-        const { query: { course_id, semester, section } } = req
-        console.log(id, semester, section)
+        const { query: { courseid } } = req
+        console.log(courseid.toString())
         const questionpapers = await QuestionPaper.findMany({
             select: {
                 id: true,
@@ -18,7 +18,7 @@ export default async function SecretRoute(req, res) {
                 question: true,
             },
             where: {
-                course_id: 1,
+                course_id: courseid.toString(),
             }
         })
         res.json({ questionpapers });
