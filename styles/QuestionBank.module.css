@@ -118,7 +118,7 @@
 
 .qcard {
     margin: 1rem;
-    padding: 1.5rem;
+    padding: 1.5rem 2.5rem;
     text-align: left;
     color: black;
     background-color: white;
@@ -200,6 +200,36 @@
     color: rgb(251, 251, 251);
     font-size: 1.2rem;
     width: 100%;
+}
+
+.QuestionField {
+    margin: 1rem;
+    padding: 1rem;
+    /* display: flex; */
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    color: rgb(251, 251, 251);
+    border: #e8e8e8 solid 1px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.question {
+    margin: 1rem 2rem;
+    margin-left: 0px;
+    padding: 1rem;
+    /* display: flex; */
+    align-items: flex-start;
+    justify-content: left;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    color: rgb(251, 251, 251);
+    border: #e8e8e8 solid 1px;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 200px;
 }
 
 .formItem {

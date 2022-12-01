@@ -12,25 +12,28 @@ datasource db {
 }
 
 model QuestionPaper {
-  id        Int        @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
+  uniqueId  String   @unique
   course_id String
   semester  String
   section   Int
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  question  Question[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  question Question[]
 
   @@map(name: "questionpaper")
 }
 
 model Question {
   id        Int           @id @default(autoincrement())
+  uniqueId  String
   question  String
   marks     Int
   co        Int
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
-  paper     QuestionPaper @relation(fields: [paper_id], references: [id])
+  paper     QuestionPaper @relation(fields: [uniqueId], references: [uniqueId])
   paper_id  Int
 
   @@map(name: "question")

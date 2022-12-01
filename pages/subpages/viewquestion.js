@@ -68,7 +68,7 @@ const Viewquestion = ({ questionpapers }) => {
                                     // map through question array
                                     questionpaper.question.map((question, index) => (
                                         <div className={styles.largeFont} key={index}>
-                                            <p className={styles.flex}>{question.question}
+                                            <p className={styles.flex}>Q{index + 1} : {question.question}
                                                 <span
                                                     className={styles.alignRight}>{'['}Marks:{question.marks} CO:{question.co} {findVerb(question.question)} {']'}</span>
                                             </p>
