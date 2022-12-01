@@ -206,6 +206,14 @@
 
 .alignRight {
     margin-left: auto;
-    padding-left: auto;
+    padding-left: 20px;
     justify-content: flex-end;
+}
+
+.paddingL10 {
+    padding-left: 10px;
+}
+
+.paddingR10 {
+    padding-left: 10px;
 }
