@@ -1,7 +1,7 @@
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link'
 import styles from '../styles/QuestionBank.module.css'
-// import navStyles from '../styles/Nav.module.css'
+import Viewquestion from './subpages/viewquestion';
 
 export default function Questionbank({  }) {
     const { user, error, isLoading } = useUser();
@@ -19,7 +19,7 @@ export default function Questionbank({  }) {
           <Link className={styles.loginContainer} href="/subpages/addquestion">Add Question</Link>
             <Link className={styles.loginContainer} href="/subpages/viewquestion">View Question</Link>
         </div>
-        
+        {/* <Viewquestion></Viewquestion> */}
         </>
       )
     } else {
