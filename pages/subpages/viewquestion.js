@@ -18,13 +18,13 @@ const Viewquestion = ({ questionpapers }) => {
         let Analyzing = 'Analyze Assume Categorize Classify Conclusion Contrast Discover Dissect Distinguish Divide Examine Function Inference Inspect List Motive Relationships Simplify Survey Take part in Test for Theme';
         let Evaluating = 'Agree Appraise Assess Award Choose Conclude Criteria Criticize Decide Deduct Defend Determine Disprove Estimate Evaluate Explain Importance Influence nterpret J udge Justify Mark Measure Opinion Perceive Prioritize prove Rate Recommend Rule Select Support Value';
         let Creating = 'Adapt Build Cha nge Choose Combine Compile Compose Construct Create Delete Design Develop Discuss Elaborate Estimate Formulate Happen Imagine mprove Invent Make up Maximize Minimize Modify Original Originate Plan predict Propose Solution Solve Suppose Test Theory'
-        let r = 'Choose Define Find How Label List Match Name omit Recall Relate Select Show Spell Tell What When Where Which Who Why'
-        Remembering = Remembering.split(' ');
-        Understanding = Understanding.split(' ');
-        Applying = Applying.split(' ');
-        Analyzing = Analyzing.split(' ');
-        Evaluating = Evaluating.split(' ');
-        Creating = Creating.split(' ');
+        Remembering = Remembering.toLowerCase().split(' ');
+        Understanding = Understanding.toLowerCase().split(' ');
+        Applying = Applying.toLowerCase().split(' ');
+        Analyzing = Analyzing.toLowerCase().split(' ');
+        Evaluating = Evaluating.toLowerCase().split(' ');
+        Creating = Creating.toLowerCase().split(' ');
+        q = q.toLowerCase();
         if (Remembering.find(w => q.includes(w))) {
             return 'Remembering';
         } else if (Understanding.find(w => q.includes(w))) {
