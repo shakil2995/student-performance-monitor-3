@@ -116,28 +116,26 @@
     line-height: 1.5;
 }
 
-/* Path: styles\QuestionBank.module.css */
 .qcard {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     margin: 1rem;
     padding: 1.5rem;
     text-align: left;
-    color: inherit;
-    text-decoration: none;
+    color: black;
+    background-color: white;
     border: 1px solid #eaeaea;
-    background-color: #eaeaea;
+    text-decoration: none;
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
-    max-width: auto;
+    max-width: 1400px;
 }
 
 .qcard:hover,
 .qcard:focus,
 .qcard:active {
-    color: #0070f3;
-    border-color: #0070f3;
+    color: #020202;
+    background-color: #e8e8e8;
+    box-shadow: #ffffff 0px 0px 15px 0px;
+    /* border: 5px solid #ffffff; */
 }
 
 .qcard h2 {
@@ -151,69 +149,86 @@
     line-height: 1.5;
 }
 
-.qContainer {
-    /* display: flex; */
-    border: 1px solid #030303;
-    background-color: #eaeaea;
-    color: black;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    padding: 10px;
-    /* max-width: 800px; */
+.topCard {
+    margin: 1rem;
+    padding: 1.5rem;
+    font-size: 2.5rem;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    max-width: 1400px;
+    background-color: rgba(125, 125, 125, 0.327);
+    backdrop-filter: blur(10px);
 }
 
 .center {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    padding: 10px;
-    line-height: 0;
-    font-size: 1.5rem;
-    /* max-width: 800px; */
-}
-
-.alignCenter {
-    font-size: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    padding: 10px;
-    /* line-height: 0; */
-    /* max-width: 800px; */
 }
 
 .largeFont {
-    font-size: 1.5rem;
-    /* display: flex; */
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    padding: 10px;
-    /* line-height: 0; */
-    /* max-width: 800px; */
+    font-size: 2.5rem;
 }
 
 .alignRight {
     margin-left: auto;
-    padding-left: 20px;
+    display: flex;
     justify-content: flex-end;
 }
 
-.paddingL10 {
-    padding-left: 10px;
+
+/*  form container */
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0px;
 }
 
-.paddingR10 {
-    padding-left: 10px;
+.courseField {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    /* border: 1px solid #eaeaea; */
+    /* background-color: rgba(125, 125, 125, 0.327); */
+    backdrop-filter: blur(10px);
+    color: rgb(251, 251, 251);
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.formItem {
+    display: flex;
+    margin: .5rem;
+    padding: 1.5rem;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    width: 100%;
+}
+
+.formButton {
+    margin: .5rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    background-color: rgba(125, 125, 125, 0.327);
+    backdrop-filter: blur(10px);
+    color: rgb(251, 251, 251);
+    font-size: 1.2rem;
+    align-items: left;
 }

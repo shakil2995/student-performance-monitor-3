@@ -11,6 +11,7 @@ export const getStaticProps = async (context) => {
 }
 // add default props
 const Viewquestion = ({ questionpapers }) => {
+
     function findVerb(q) {
         let Remembering = 'Choose Define Find How Label List Match Name omit Recall Relate Select Show Spell Tell What When Where Which Who Why';
         let Understanding = 'Compare Contrast Demonstrate Explain Extend Illustrate Infer Interpret Outline Relate Rephrase Show Summarize Translate';
@@ -48,34 +49,34 @@ const Viewquestion = ({ questionpapers }) => {
         }
     }
 
+
     // console.log(questionpapers.questionpapers)
     return (
         <div>
-            <h3 className={styles.alignCenter}>Question Papers</h3>
+            <h3 className={styles.topCard}>Question Papers</h3>
             <div >
                 {
                     questionpapers.questionpapers.map((questionpaper, index) => (
+                        <div className={styles.qcard} key={index}>
+                            <div>
+                                {/* {console.log(questionpaper.index.id)} */}
+                                <h3 className={styles.center}>{questionpaper.course_id}</h3>
+                                <p className={styles.center}>Semester :{questionpaper.semester} </p>
+                                <p className={styles.center}> Section :{questionpaper.section}</p>
 
-                        <div className={styles.qContainer} key={index}>
-                            {/* {console.log(questionpaper.index.id)} */}
-                            <h3 className={styles.center}>{questionpaper.course_id}</h3>
-                            <p className={styles.center}>Semester :{questionpaper.semester} </p>
-                            <p className={styles.center}> Section :{questionpaper.section}</p>
-
-                            {
-                                // map through question array
-                                questionpaper.question.map((question, index) => (
-                                    <div className={styles.largeFont} key={index}>
-                                        <p className={styles.flex}>{question.question}
-                                            <span
-                                                className={styles.alignRight}>marks:{question.marks} CO:{question.co} {findVerb(question.question)}</span>
-                                        </p>
-                                        {/* <p>{question.marks}</p>
-                                        <p>{question.co}</p> */}
-                                    </div>
-                                ))
-                            }
-                            {/* <br></br> */}
+                                {
+                                    // map through question array
+                                    questionpaper.question.map((question, index) => (
+                                        <div className={styles.largeFont} key={index}>
+                                            <p className={styles.flex}>{question.question}
+                                                <span
+                                                    className={styles.alignRight}>{'['}Marks:{question.marks} CO:{question.co} {findVerb(question.question)} {']'}</span>
+                                            </p>
+                                        </div>
+                                    ))
+                                }
+                                {/* <br></br> */}
+                            </div>
                         </div>
                     ))
 
