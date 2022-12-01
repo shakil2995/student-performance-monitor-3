@@ -6,7 +6,7 @@ import navStyles from '../styles/Nav.module.css'
 const Nav = ({ children }) => {
     const { user, error, isLoading } = useUser();
     const router = useRouter();
-    console.log(router.pathname);
+    // console.log(router.pathname);
     return (
         <nav className={navStyles.nav}>
             <ul>

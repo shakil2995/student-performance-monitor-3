@@ -13,11 +13,14 @@ export default function Questionbank({  }) {
     }
     if (user) {
       return (
+        <>
         <div className={styles.container}>
           <h1>Welcome {user.nickname}!</h1>
           <Link className={styles.loginContainer} href="/subpages/addquestion">Add Question</Link>
             <Link className={styles.loginContainer} href="/subpages/viewquestion">View Question</Link>
         </div>
+        
+        </>
       )
     } else {
       return (
