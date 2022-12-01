@@ -26,7 +26,7 @@ const Addquestion = ({ children }) => {
                 Course ID :<input className={styles.formItem} placeholder="Course ID" type="text" required name="course_id" onChange={courseDetails.handleChange} value={courseDetails.values.course_id} />
                 Semester :<input className={styles.formItem} placeholder="Semester" type="text" required name="semester" onChange={courseDetails.handleChange} value={courseDetails.values.semester} />
                 Section :<input className={styles.formItem} placeholder="Section" type="text" required name="section" onChange={courseDetails.handleChange} value={courseDetails.values.section} />
-                Unique ID auto generated:<input className={styles.formItem} placeholder="Unique ID" type="text" required name="uniqueId" onChange={courseDetails.handleChange} value={courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section} />
+                Unique ID (auto generated):<input className={styles.formItem} placeholder="Unique ID" type="text" required name="uniqueId" onChange={courseDetails.handleChange} value={courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section} />
                 Total Questions :<input className={styles.formItem} placeholder="Number of Questions" type="number" required name="totalQuestions" min="0" onChange={courseDetails.handleChange} value={courseDetails.values.totalQuestions} />
 
                 <QuestionField props={courseDetails} />
@@ -49,8 +49,8 @@ const QuestionField = (props) => {
     return (
         <div className={styles.QuestionField}>
             Question: <textarea className={styles.question} placeholder="Question" type="text-field" required name="question" onChange={props.props.handleChange} value={props.props.values.question} />
-            Marks: <input className={styles.formItem} placeholder="Marks" type="number" required name="marks" onChange={props.props.handleChange} value={props.props.values.marks} />
-            Co: <input className={styles.formItem} placeholder="CO" type="number" required name="co" min="1" max="4" onChange={props.props.handleChange} value={props.props.values.co} />
+            Marks: <input className={styles.questionItem} placeholder="Marks" type="number" required name="marks" onChange={props.props.handleChange} value={props.props.values.marks} />
+            Co: <input className={styles.questionItem} placeholder="CO" type="number" required name="co" min="1" max="4" onChange={props.props.handleChange} value={props.props.values.co} />
         </div>
 
     )
