@@ -11,8 +11,11 @@ const Nav = ({ children }) => {
         <nav className={navStyles.nav}>
             <ul>
                 <li>
-                    <Link className={router.pathname == "/" ? navStyles.active : null} href="/">Home</Link>
+                    <Link className={router.pathname == "/" ? navStyles.active : null} href="/"><span className={navStyles.titleLogo}>SPMS</span></Link>
                 </li>
+                {/* <li>
+                    <Link className={router.pathname == "/" ? navStyles.active : null} href="/">Home</Link>
+                </li> */}
                 {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/outline" ? navStyles.active : null} href="/outline">Course Outline</Link></li> : null) : null}
                 {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/questionbank" ? navStyles.active : null} href="/questionbank">Question Bank</Link></li> : null) : null}
                 {user ? <li> <Link className={router.pathname == "/co" ? navStyles.active : null} href="/co">CO</Link></li> : null}
