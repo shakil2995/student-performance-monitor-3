@@ -26,7 +26,7 @@ export default function Home({ articles }) {
   } else {
     return (
       <div className={styles.container}>
-        <h1>Welcome User !! Please Login/Signup to continue.</h1>
+        <h1>Welcome To SPMS !! Please Login/Signup to continue.</h1>
         <a href='http://localhost:3000/api/auth/login' className={styles.loginContainer}>Login</a>
         <a href='http://localhost:3000/api/auth/login' className={styles.signupContainer}>Signup</a>
       </div>
