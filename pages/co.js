@@ -1,4 +1,5 @@
-// import styles from '../styles/co.module.css'
+import styles from '../styles/co.module.css'
+import { useFormik } from 'formik'
 import BarChart from '../components/BarChart';
 import RadarChart from '../components/RadarChart';
 export const getStaticProps = async (context) => {
@@ -11,17 +12,31 @@ export const getStaticProps = async (context) => {
         }
     }
 }
-// add default props
 const Co = ({ studentData }) => {
+    const searchStudent = useFormik({
+        initialValues: {
+            student_id: '',
+            submit: 'Search',
+        },
+        onSubmit: values => {
+            console.log(searchStudent.values);
+        },
+    })
 
-    // console.log(studentData.students.student_id)
-    return (
-        <div>
-            {/* <BarChart props={studentData} /> */}
-            {/* <BarChart /> */}
 
+    return (<>
+        <form onSubmit={searchStudent.handleSubmit} className={styles.formContainer}>
+            <div className={styles.courseField}>
+                Student ID :<input className={styles.formItem} placeholder="Student ID" type="text" required name="student_id" onChange={searchStudent.handleChange} value={searchStudent.values.student_id} />
+            </div>
+
+            <button className={styles.formButton} type="submit">{searchStudent.values.submit}</button>
+        </form>
+        <div className={styles.container}>
             <RadarChart props={studentData} />
         </div>
+    </>
+
 
     )
 }
