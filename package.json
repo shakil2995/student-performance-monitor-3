@@ -12,15 +12,16 @@
     "@auth0/nextjs-auth0": "^1.9.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@prisma/client": "^4.7.0",
-    "chart.js": "^4.0.1",
+    "chart.js": "^2.9.4",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "formik": "^2.2.9",
     "next": "13.0.5",
     "react": "18.2.0",
-    "react-chartjs-2": "^5.0.1",
+    "react-chartjs-2": "^2.11.2",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
