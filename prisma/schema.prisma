@@ -38,3 +38,19 @@ model Question {
 
   @@map(name: "question")
 }
+
+model ObeStudent {
+  student_id   String @id @default(uuid())
+  student_name String
+  courseID     String
+  section      Int
+  semester     String
+  total        Int
+  CO1          Int
+  CO2          Int
+  CO3          Int
+  CO4          Int
+  grade        String
+
+  @@map(name: "obestudent")
+}

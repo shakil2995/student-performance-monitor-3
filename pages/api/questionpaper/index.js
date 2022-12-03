@@ -3,8 +3,6 @@ const { PrismaClient } = require('@prisma/client')
 // export default withApiAuthRequired(async function SecretRoute(req, res) {
 export default async function SecretRoute(req, res) {
     const { QuestionPaper, Question } = new PrismaClient()
-
-
     if (req.method === 'GET') {
         const questionpapers = await QuestionPaper.findMany({
             select: {

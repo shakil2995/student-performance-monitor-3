@@ -19,7 +19,7 @@ const Nav = ({ children }) => {
                 {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/outline" ? navStyles.active : null} href="/outline">Course Outline</Link></li> : null) : null}
                 {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/questionbank" ? navStyles.active : null} href="/questionbank">Question Bank</Link></li> : null) : null}
                 {user ? <li> <Link className={router.pathname == "/co" ? navStyles.active : null} href="/co">CO</Link></li> : null}
-                {user ? <li> <Link className={router.pathname == "/po" ? navStyles.active : null} href="/po">PO</Link></li> : null}
+                {/* {user ? <li> <Link className={router.pathname == "/po" ? navStyles.active : null} href="/po">PO</Link></li> : null} */}
             </ul>
             <ul className={navStyles.rightAlign}>
                 {user ? <li> <Link className={router.pathname == `/user/[...user]` ? navStyles.active : null} href={`/user/${user.nickname}`}>{user.nickname}</Link></li> : null}
