@@ -19,10 +19,17 @@ const Co = ({ studentData }) => {
             submit: 'Search',
         },
         onSubmit: values => {
-            console.log(searchStudent.values);
+            // console.log(searchStudent.values.student_id);
+            callChart()
         },
     })
+    function callChart() {
+        return (
+            // <h1>hello</h1>
+            <RadarChart props={searchStudent.values.student_id} />
+        )
 
+    }
 
     return (<>
         <form onSubmit={searchStudent.handleSubmit} className={styles.formContainer}>
@@ -33,7 +40,9 @@ const Co = ({ studentData }) => {
             <button className={styles.formButton} type="submit">{searchStudent.values.submit}</button>
         </form>
         <div className={styles.container}>
-            <RadarChart props={studentData} />
+            {searchStudent.values.student_id.length >= 7 ? callChart() : <></>}
+            {/* <RadarChart props={studentData} /> */}
+            {/* {callChart()} */}
         </div>
     </>
 
