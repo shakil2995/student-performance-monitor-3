@@ -43,9 +43,10 @@ export default async function SecretRoute(req, res) {
                     course_id: courseid.toString(),
                     semester: semester.toString(),
                     section: parseInt(section),
-                    question: question.toString(),
+                    // question: question.toString(),
                 }
             })
+            res.json({ questionpaper });
         }
         else {
             res.json({ questionpapers });
