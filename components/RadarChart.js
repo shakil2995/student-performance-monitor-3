@@ -1,4 +1,5 @@
 // import React from 'react'
+import { useState, useEffect } from 'react'
 import { Radar } from 'react-chartjs-2'
 // import {
 //     Chart as ChartJs,
@@ -18,23 +19,73 @@ import { Radar } from 'react-chartjs-2'
 import styles from '../styles/co.module.css'
 
 export const RadarChart = (props) => {
-    let sData = props.props.students;
-    // console.log(sData)
-    let co1 = (sData.CO1 / 110) * 100;
-    let co2 = (sData.CO2 / 40) * 100;
-    let co3 = (sData.CO3 / 50) * 100;
-    let co4 = (sData.CO4 / 50) * 100;
-    let coTotal = ((co1 + co2 + co3 + co4) / 4);
+    console.log(props.props);
+
+
+    let sData;
+    let co1;
+    let co2;
+    let co3;
+    let co4;
+    let coTotal;
+    let studentName;
 
     let bCo1 = (107 / 110) * 100;
     let bCo2 = (30 / 40) * 100;
     let bCo3 = (48 / 50) * 100;
     let bCo4 = (43 / 50) * 100;
     let bCoTotal = ((bCo1 + bCo2 + bCo3 + bCo4) / 4);
+
+    function StudentProfile() {
+        const [data, setData] = useState(null)
+        const [isLoading, setLoading] = useState(false)
+
+        useEffect(() => {
+            setLoading(true)
+            fetch(`http://localhost:3000/api/student/${props.props}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setData(data)
+                    setLoading(false)
+                })
+        }, [])
+
+        if (isLoading) return <p>Loading...</p>
+        if (!data) return <p>No profile data</p>
+
+        // console.log(data.students)
+
+        sData = data.students;
+        // console.log(sData.CO1)
+        co1 = (sData.CO1 / 110) * 100;
+        co2 = (sData.CO2 / 40) * 100;
+        co3 = (sData.CO3 / 50) * 100;
+        co4 = (sData.CO4 / 50) * 100;
+        coTotal = ((co1 + co2 + co3 + co4) / 4);
+        studentName = sData.student_name;
+        // console.log(co1, co2, co3, co4, coTotal, studentName)
+    }
+    StudentProfile();
+    // console.log(data)
+
+
+    // let sData = props.props.students;
+    // // console.log(sData)
+    // let co1 = (sData.CO1 / 110) * 100;
+    // let co2 = (sData.CO2 / 40) * 100;
+    // let co3 = (sData.CO3 / 50) * 100;
+    // let co4 = (sData.CO4 / 50) * 100;
+    // let coTotal = ((co1 + co2 + co3 + co4) / 4);
+
+    // let bCo1 = (107 / 110) * 100;
+    // let bCo2 = (30 / 40) * 100;
+    // let bCo3 = (48 / 50) * 100;
+    // let bCo4 = (43 / 50) * 100;
+    // let bCoTotal = ((bCo1 + bCo2 + bCo3 + bCo4) / 4);
     // console.log(props.props.students)
     return (
         <div>
-            <h1 className={styles.title}>CO of {sData.student_name}</h1>
+            <h1 className={styles.title}>CO of {studentName}</h1>
             <div className={styles.bgWhite}>
                 <Radar data={{
                     labels: [
@@ -47,7 +98,7 @@ export const RadarChart = (props) => {
                         // 'Average'
                     ],
                     datasets: [{
-                        label: `${sData.student_name}`,
+                        label: `${studentName}`,
                         data: [co1, co2, co3, co4, coTotal],
                         fill: true,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -94,3 +145,14 @@ export const RadarChart = (props) => {
     )
 }
 export default RadarChart
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`http://localhost:3000/api/student/${searchStudent.values.student_id}`)
+    const studentData = await res.json()
+    // console.log(studentData.students.student_id)
+    return {
+        props: {
+            studentData,
+        }
+    }
+}
