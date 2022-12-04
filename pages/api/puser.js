@@ -56,3 +56,13 @@ export default async function SecretRoute(req, res) {
         res.json({ user });
     }
 };
+
+
+// {
+//     "id": 3,
+//     "posts": [
+//         {
+//             "title": "test1"
+//         }
+//     ]
+// }
