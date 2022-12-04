@@ -6,9 +6,10 @@ export default async function SecretRoute(req, res) {
     const { QuestionPaper, Question } = new PrismaClient()
 
     if (req.method === 'GET') {
+        console.log(req.body)
         // get url path
         const { query: { courseid, semester, section } } = req
-        console.log(courseid.toString(), semester.toString(), section)
+        // console.log(courseid.toString(), semester.toString(), section)
         const questionpapers = await QuestionPaper.findMany({
             select: {
                 id: true,
@@ -27,32 +28,35 @@ export default async function SecretRoute(req, res) {
         res.json({ questionpapers });
     }
     if (req.method === 'POST') {
+        console.log(req.body)
+        let bodyValues = req.body
         const questionpapers = await QuestionPaper.create({
-            data: {
-                uniqueId: 'CSE200summer222',
-                course_id: 'CSE200',
-                semester: 'summer22',
-                section: 2,
-                question: {
-                    createMany: {
-                        data: [
-                            {
-                                question: "q1",
-                                marks: 5,
-                                co: 1
-                            },
-                            {
-                                question: "q2",
-                                marks: 6,
-                                co: 2
-                            },
-                        ]
-                    }
-                }
+            data: bodyValues
+            // data: {
+            //     uniqueId: 'CSE200summer222',
+            //     course_id: 'CSE200',
+            //     semester: 'summer22',
+            //     section: 2,
+            //     question: {
+            //         createMany: {
+            //             data: [
+            //                 {
+            //                     question: "q1",
+            //                     marks: 5,
+            //                     co: 1
+            //                 },
+            //                 {
+            //                     question: "q2",
+            //                     marks: 6,
+            //                     co: 2
+            //                 },
+            //             ]
+            //         }
+            //     }
 
-            }
+            // }
         })
-        res.json({ questionpapers });
+        res.json({ bodyValues });
     }
 };
 // });
@@ -60,17 +64,24 @@ export default async function SecretRoute(req, res) {
 
 
 // {
-// 	"course_id": "a",
-// 	"semester": "s",
-// 	"section": "1",
-// 	"uniqueId": "as1",
-// 	"question": [
-// 		{
-// 			"id": 1,
-// 			"uniqueId": "uid",
-// 			"question": "q1",
-// 			"marks": 5,
-// 			"co": 1
+// 	"uniqueId": "CSE200summer222",
+// 	"course_id": "CSE200",
+// 	"semester": "summer22",
+// 	"section": 2,
+// 	"question": {
+// 		"createMany": {
+// 			"data": [
+// 				{
+// 					"question": "q1",
+// 					"marks": 5,
+// 					"co": 1
+// 				},
+// 				{
+// 					"question": "q2",
+// 					"marks": 6,
+// 					"co": 2
+// 				}
+// 			]
 // 		}
-// 	]
+// 	}
 // }

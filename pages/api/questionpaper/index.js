@@ -19,27 +19,32 @@ export default async function SecretRoute(req, res) {
         res.json({ questionpapers });
     }
     if (req.method === 'POST') {
-        const questionpapers = QuestionPaper.create({
+        const questionpapers = await QuestionPaper.create({
             data: {
+                uniqueId: 'CSE200summer222',
                 course_id: 'CSE200',
                 semester: 'summer22',
                 section: 2,
-                uniqueId: 'CSE200summer222',
                 question: {
-                    create: {
-                        "uniqueId": "uid",
-                        "question": "q1",
-                        "marks": 5,
-                        "co": 1
+                    createMany: {
+                        data: [
+                            {
+                                question: "q1",
+                                marks: 5,
+                                co: 1
+                            },
+                            {
+                                question: "q2",
+                                marks: 6,
+                                co: 2
+                            },
+                        ]
                     }
                 }
 
             }
         })
         res.json({ questionpapers });
-    }
-    else {
-        res.status(405).end();
     }
 };
 // });
