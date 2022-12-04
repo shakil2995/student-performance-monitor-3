@@ -20,7 +20,17 @@ import styles from '../styles/co.module.css'
 
 export const RadarChart = (props) => {
     console.log(props.props);
+    // create a new state variable
+    const [studentData, setStudentData] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/student/${props.props}`)
 
+            .then(res => res.json())
+            .then(data => {
+                setStudentData(data.students);
+                // console.log(data.students);
+            })
+    }, [props.props]);
 
     let sData;
     let co1;
@@ -66,23 +76,6 @@ export const RadarChart = (props) => {
         // console.log(co1, co2, co3, co4, coTotal, studentName)
     }
     StudentProfile();
-    // console.log(data)
-
-
-    // let sData = props.props.students;
-    // // console.log(sData)
-    // let co1 = (sData.CO1 / 110) * 100;
-    // let co2 = (sData.CO2 / 40) * 100;
-    // let co3 = (sData.CO3 / 50) * 100;
-    // let co4 = (sData.CO4 / 50) * 100;
-    // let coTotal = ((co1 + co2 + co3 + co4) / 4);
-
-    // let bCo1 = (107 / 110) * 100;
-    // let bCo2 = (30 / 40) * 100;
-    // let bCo3 = (48 / 50) * 100;
-    // let bCo4 = (43 / 50) * 100;
-    // let bCoTotal = ((bCo1 + bCo2 + bCo3 + bCo4) / 4);
-    // console.log(props.props.students)
     return (
         <div>
             <h1 className={styles.title}>CO of {studentName}</h1>
