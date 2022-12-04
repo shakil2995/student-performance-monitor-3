@@ -1,7 +1,38 @@
 import { useFormik } from 'formik'
+// import { PrismaClient } from '@prisma/client'
+// const prisma = new PrismaClient()
 // import QuestionField from '../components/QuestionField'
 import styles from '../../styles/QuestionBank.module.css'
 const Addquestion = ({ children }) => {
+
+    // async function addQuestionPaper() {
+    //     await prisma.questionPaper.create({
+    //         data: {
+    //             course_id: formik.values.course_id,
+    //             semester: formik.values.semester,
+    //             section: formik.values.section,
+    //             uniqueId: formik.values.course_id + formik.values.semester + formik.values.section,
+    //             question: {
+    //                 create: [
+    //                     {
+    //                         question: formik.values.question,
+    //                         option1: formik.values.option1,
+    //                         option2: formik.values.option2,
+    //                         option3: formik.values.option3,
+    //                         option4: formik.values.option4,
+    //                         answer: formik.values.answer,
+    //                     },
+    //                 ],
+    //             },
+
+    //         }
+    //     })
+    // }
+
+
+
+
+
     function addQuestion(params) {
         // console.log(params);
         let arr = []
