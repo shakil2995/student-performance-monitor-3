@@ -64,21 +64,29 @@ export const RadarChart = (props) => {
         if (!data) return <p>No profile data</p>
 
         // console.log(data.students)
-
-        sData = data.students;
-        // console.log(sData.CO1)
-        co1 = (sData.CO1 / 110) * 100;
-        co2 = (sData.CO2 / 40) * 100;
-        co3 = (sData.CO3 / 50) * 100;
-        co4 = (sData.CO4 / 50) * 100;
-        coTotal = ((co1 + co2 + co3 + co4) / 4);
-        studentName = sData.student_name;
-        // console.log(co1, co2, co3, co4, coTotal, studentName)
+        if (data.students) {
+            sData = data.students;
+            co1 = (sData.CO1 / 110) * 100;
+            co2 = (sData.CO2 / 40) * 100;
+            co3 = (sData.CO3 / 50) * 100;
+            co4 = (sData.CO4 / 50) * 100;
+            coTotal = ((co1 + co2 + co3 + co4) / 4);
+            studentName = sData.student_name;
+            // console.log(co1, co2, co3, co4, coTotal, studentName)
+        } else {
+            sData = null;
+            co1 = 'N/A';
+            co2 = 'N/A';
+            co3 = 'N/A';
+            co4 = 'N/A';
+            coTotal = 'N/A';
+            studentName = '';
+        }
     }
     StudentProfile();
     return (
         <div>
-            <h1 className={styles.title}>CO of {studentName}</h1>
+            <h1 className={styles.title}>{studentName == '' ? `Student not found` : 'CO of '}{studentName}</h1>
             <div className={styles.bgWhite}>
                 <Radar data={{
                     labels: [
@@ -86,7 +94,7 @@ export const RadarChart = (props) => {
                         'CO2',
                         'CO3',
                         'CO4',
-                        'Semester total',
+                        'Average Semester total',
                         // 'Grade',
                         // 'Average'
                     ],

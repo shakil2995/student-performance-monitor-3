@@ -26,21 +26,30 @@ export default async function SecretRoute(req, res) {
         res.json({ questionpapers });
     }
     if (req.method === 'POST') {
-        const { course_id, semester, section, question } = params.req.body;
-        const questionExist = await QuestionPaper.findUnique({
-            where: {
-                // course_id: course_id,
-                // semester: semester,
-                id: section,
-            },
+        const { courseid, semester, section, question } = params.req.body;
+        const questionpapers = await QuestionPaper.findMany({
             select: {
-                course_id: true,
-                semester: true,
-                section: true,
-                question: true,
+                id: true,
+            },
+            where: {
+                course_id: courseid.toString(),
+                semester: semester.toString(),
+                section: parseInt(section),
             }
-        });
-        res.json({ questionExist });
+        })
+        if (questionpapers.length === 0) {
+            const questionpaper = await QuestionPaper.create({
+                data: {
+                    course_id: courseid.toString(),
+                    semester: semester.toString(),
+                    section: parseInt(section),
+                    question: question.toString(),
+                }
+            })
+        }
+        else {
+            res.json({ questionpapers });
+        }
     }
     else {
         res.status(405).end();
