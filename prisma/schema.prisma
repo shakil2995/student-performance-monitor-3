@@ -50,10 +50,22 @@ model ObeStudent {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  posts Post[]
 
+  @@unique([id, name])
   @@map(name: "user")
+}
+
+model Post {
+  id         Int    @id @default(autoincrement())
+  title      String
+  authorId   Int
+  authorName String
+  author     User   @relation(fields: [authorId, authorName], references: [id, name])
+
+  @@map(name: "post")
 }
 
 // model ObeCourseOutline {

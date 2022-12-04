@@ -16,6 +16,7 @@ export default async function SecretRoute(req, res) {
                 semester: true,
                 section: true,
                 question: true,
+                uniqueId: true,
             },
             where: {
                 course_id: courseid.toString(),
@@ -32,24 +33,39 @@ export default async function SecretRoute(req, res) {
                 semester: 'summer22',
                 section: 2,
                 uniqueId: 'CSE200summer222',
-                // question: {
-                //     create: [
-                //         {
-                //             uniqueId: 'CS22',
-                //             question: 'What is the capital of India?',
-                //             marks: 10,
-                //             co: 1,
-                //         },
-                //     ],
-                // },
+                question: {
+                    create: {
+                        "uniqueId": "uid",
+                        "question": "q1",
+                        "marks": 5,
+                        "co": 1
+                    }
+                }
 
             }
         })
         res.json({ questionpapers });
-        // res.status(200).json({ message: 'Success' });
     }
     else {
         res.status(405).end();
     }
 };
 // });
+
+
+
+// {
+// 	"course_id": "a",
+// 	"semester": "s",
+// 	"section": "1",
+// 	"uniqueId": "as1",
+// 	"question": [
+// 		{
+// 			"id": 1,
+// 			"uniqueId": "uid",
+// 			"question": "q1",
+// 			"marks": 5,
+// 			"co": 1
+// 		}
+// 	]
+// }
