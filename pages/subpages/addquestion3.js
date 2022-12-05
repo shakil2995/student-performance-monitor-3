@@ -1,113 +1,88 @@
-import { useFormik } from 'formik'
-// import { PrismaClient } from '@prisma/client'
-// const prisma = new PrismaClient()
-// import QuestionField from '../components/QuestionField'
-import styles from '../../styles/QuestionBank.module.css'
-const Addquestion = ({ children }) => {
+import React from "react";
+import { Formik, Form, Field, FieldArray, useFormik } from "formik";
+// import 'bootstrap/dist/css/bootstrap.css';
+import styles from '../../styles/formFields.module.css'
+function YoutubeForm() {
 
-    // async function addQuestionPaper() {
-    //     await prisma.questionPaper.create({
-    //         data: {
-    //             course_id: formik.values.course_id,
-    //             semester: formik.values.semester,
-    //             section: formik.values.section,
-    //             uniqueId: formik.values.course_id + formik.values.semester + formik.values.section,
-    //             question: {
-    //                 create: [
-    //                     {
-    //                         question: formik.values.question,
-    //                         option1: formik.values.option1,
-    //                         option2: formik.values.option2,
-    //                         option3: formik.values.option3,
-    //                         option4: formik.values.option4,
-    //                         answer: formik.values.answer,
-    //                     },
-    //                 ],
-    //             },
-
-    //         }
-    //     })
-    // }
-
-
-
-
-
-    function addQuestion(params) {
-        let arr = []
-        for (let i = 1; i <= params; i++) {
-            arr.push(<QuestionField
-                props={questionDetails}
-                numbers={i}
-            />)
-        }
-        return (
-            arr
-        )
-
-    }
     const courseDetails = useFormik({
         initialValues: {
-            course_id: '',
-            semester: '',
-            section: '',
-            uniqueId: '',
-            totalQuestions: '',
-            question: [],
-            submit: 'Submit',
-        },
-        onSubmit: values => {
-            courseDetails.values.submit = 'Submitted'
-            let uniqueId = values.course_id + values.semester + values.section
-            // console.log(courseDetails.values);
-            console.log(questionDetails.values);
+            // uniqueId: 'unique_id',
+            course_id: 'course_id',
+            semester: 'semester',
+            section: 'section',
+            questions: {
+                data:
+                    [
+                        { question: '', marks: '', co: '' },
+                    ]
+            },
+            submit: 'Submit'
         },
     })
-    const questionDetails = useFormik({
-
-        initialValues: {
-            // uniqueId: courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section,
-            question: [],
-            marks: [],
-            co: [],
-            submit: 'Submit',
-        },
-        onSubmit: values => {
-
-            // questionDetails.values.submit = 'Submitted'
-            // console.log(questionDetails.values);
-        },
-    })
-
-
     return (
-        <form onSubmit={courseDetails.handleSubmit} className={styles.formContainer}>
-            <div className={styles.courseField}>
-                Course ID :<input className={styles.formItem} placeholder="Course ID" type="text" required name="course_id" onChange={courseDetails.handleChange} value={courseDetails.values.course_id} />
-                Semester :<input className={styles.formItem} placeholder="Semester" type="text" required name="semester" onChange={courseDetails.handleChange} value={courseDetails.values.semester} />
-                Section :<input className={styles.formItem} placeholder="Section" type="text" required name="section" onChange={courseDetails.handleChange} value={courseDetails.values.section} />
-                Unique ID (auto generated):<input className={styles.formItem} placeholder="Unique ID" type="text" required name="uniqueId" onChange={courseDetails.handleChange} value={courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section} />
-                Total Questions :<input className={styles.formItem} placeholder="Number of Questions" type="number" required name="totalQuestions" min="0" onChange={courseDetails.handleChange} value={courseDetails.values.totalQuestions} />
-                {addQuestion(courseDetails.values.totalQuestions)}
-            </div>
+        <Formik
+            initialValues={
+                {
+                    ...courseDetails.values,
+                }}
+            onSubmit={values =>
+                console.log("Form values", values)
+            }>
+            <Form >
+                <div className={styles.formItem}>
+                    <label htmlFor="course_id">course_id : </label>
+                    <Field type="text" id="course_id" name="course_id" placeholder="Enter your course_id"
+                    />
+                </div>
 
-            <button className={styles.formButton} type="submit">{courseDetails.values.submit}</button>
-        </form>
-    );
+                <div className={styles.formItem}>
+                    <label htmlFor="semester">semester : </label>
+                    <Field type="text" id="semester" name="semester" placeholder="Enter your semester"
+                    />
+                </div>
 
-}
-export default Addquestion
+                <div className={styles.formItem}>
+                    <label htmlFor="section">section : </label>
+                    <Field type="text" id="section" name="section" placeholder="Enter your section"
+                    />
+                </div>
 
-const QuestionField = (props, i) => {
-    let prop = props.props.values
-    prop.uniqueId = prop.course_id + prop.semester + prop.section
-    // console.log(prop.totalQuestions);
-    return (
-        <div className={styles.QuestionField} key={i}>
-            Question: <textarea className={styles.question} placeholder="Question" type="text-field" required name="question" onChange={props.props.handleChange} value={props.props.values.question[i]} />
-            Marks: <input className={styles.questionItem} placeholder="Marks" type="number" required name="marks" onChange={props.props.handleChange} value={props.props.values.marks[i]} />
-            Co: <input className={styles.questionItem} placeholder="CO" type="number" required name="co" min="1" max="4" onChange={props.props.handleChange} value={props.props.values.co[i]} />
-        </div>
+                <FieldArray name="questions.data" >
+                    {
+                        (FieldArrayProps) => {
+                            // console.log("FieldArrayProps", FieldArrayProps.form.values);
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { questions } = values;
+                            return (
+                                <div>
+                                    {
+                                        questions.data.map((phNumber, index) => (
+                                            <div key={index}>
+                                                <label htmlFor="Question"> Question : </label>
+                                                <Field as="textarea" name={`questions.data[${index}].question`} />
 
+                                                <label htmlFor="marks"> marks : </label>
+                                                <Field name={`questions.data[${index}].marks`} />
+
+                                                <label htmlFor="co"> co : </label>
+                                                <Field name={`questions.data[${index}].co`} />
+                                                {
+                                                    index > 0 && <button type="button" onClick={() => remove(index)}>-</button>
+                                                }
+                                                <button type="button" onClick={() => push('')}>+</button>
+                                                {/* <button type="button" onClick={() => remove('')}>-</button> */}
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <button type="submit">Submit</button>
+            </Form>
+        </Formik>
     )
 }
+export default YoutubeForm;

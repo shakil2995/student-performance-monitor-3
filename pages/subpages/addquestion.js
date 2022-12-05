@@ -48,13 +48,18 @@ const Addquestion = ({ children }) => {
     }
     const courseDetails = useFormik({
         initialValues: {
-            course_id: '',
-            semester: '',
-            section: '',
-            uniqueId: '',
-            totalQuestions: '',
-            question: [],
-            submit: 'Submit',
+            // uniqueId: 'unique_id',
+            course_id: 'course_id',
+            semester: 'semester',
+            section: 'section',
+            question: {
+                data:
+                    [
+                        { question: 'q1', marks: '5', co: '2' },
+                        { question: 'q2', marks: '10', co: '1' }
+                    ]
+            },
+            submit: 'Submit'
         },
         onSubmit: values => {
             courseDetails.values.submit = 'Submitted'
