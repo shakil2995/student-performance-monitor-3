@@ -18,10 +18,11 @@ function YoutubeForm() {
                         twitter: 'twitter'
                     },
                     phoneNumbers: ['1234567890', '0987654321'],
-                    phNumbers: ['']
+                    phNumbers: [{ 'phone': '1234567890', 'name': 'name1' }, { 'phone': '0987654321', 'name': 'name2' }
+                    ]
                 }}
             onSubmit={values =>
-                console.log("Form values")
+                console.log("Form values", values) // console.log("Form values", values)
             }>
             <Form >
                 <div className={styles.formItem}>
@@ -36,17 +37,17 @@ function YoutubeForm() {
                 </div>
                 <div className={styles.formItem}>
                     <label htmlFor="channel">Channel : </label>
-                    <Field as="textarea" id="channel" name="channel" placeholder="Enter your channel"
+                    <Field id="channel" name="channel" placeholder="Enter your channel"
                     />
                 </div>
                 <div className={styles.formItem}>
                     <label htmlFor="address">address : </label>
-                    <Field as="textarea" id="channel" name="address" placeholder="Enter your address">
+                    <Field id="channel" name="address" placeholder="Enter your address">
                         {
                             (props) => {
                                 const { field, form, meta } = props;
                                 // console.log("Field render props", props);
-                                return <input as="textarea" placeholder="Address" id='address' {...field} />
+                                return <input placeholder="Address" id='address' {...field} />
                             }
                         }
                     </Field>
@@ -75,7 +76,7 @@ function YoutubeForm() {
                         <FieldArray name="phNumbers" >
                             {
                                 (FieldArrayProps) => {
-                                    console.log("FieldArrayProps", FieldArrayProps);
+                                    // console.log("FieldArrayProps", FieldArrayProps.form.values);
                                     const { push, remove, form } = FieldArrayProps;
                                     const { values } = form;
                                     const { phNumbers } = values;
@@ -84,7 +85,8 @@ function YoutubeForm() {
                                             {
                                                 phNumbers.map((phNumber, index) => (
                                                     <div key={index}>
-                                                        <Field name={`phNumbers[${index}]`} />
+                                                        <Field name={`phNumbers[${index}].phone`} />
+                                                        <Field name={`phNumbers[${index}].name`} />
                                                         {
                                                             index > 0 && <button type="button" onClick={() => remove(index)}>-</button>
                                                         }

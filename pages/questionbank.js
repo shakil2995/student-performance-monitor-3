@@ -18,7 +18,8 @@ export default function Questionbank({  }) {
         <>
         <div className={styles.container}>
           <h1>Welcome {user.nickname}!</h1>
-          <Link className={styles.loginContainer}  href="/subpages/addquestion3">Add Question</Link>
+          <Link className={styles.loginContainer}  href="/subpages/addquestion2">Add Question2</Link>
+          <Link className={styles.loginContainer}  href="/subpages/addquestion3">Add Question3</Link>
           {/* <Link className={styles.loginContainer}  href="/subpages/prismaAdd">Add Question</Link> */}
          
           {/* <Link className={styles.loginContainer}  href="http://localhost:5555/">Add Question Using Prisma</Link> */}
