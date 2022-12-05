@@ -1,6 +1,6 @@
 // import React from 'react'
 import { useState, useEffect } from 'react'
-import { Radar, Bar, Pie } from 'react-chartjs-2'
+import { Radar, Bar } from 'react-chartjs-2'
 // import {
 //     Chart as ChartJs,
 //     LineElement,
@@ -16,9 +16,9 @@ import { Radar, Bar, Pie } from 'react-chartjs-2'
 //     LinearScale,
 //     CategoryScale
 // )
-import styles from '../styles/co.module.css'
+import styles from '../../styles/co.module.css'
 
-export const PieChart = (props) => {
+export const BarChart = (props) => {
     console.log(props.props);
     // create a new state variable
     const [studentData, setStudentData] = useState([]);
@@ -88,7 +88,7 @@ export const PieChart = (props) => {
         <div>
             {/* <h1 className={styles.title}>{studentName == '' ? `Student not found` : 'CO of '}{studentName}</h1> */}
             <div className={styles.bgWhite}>
-                <Pie data={{
+                <Bar data={{
                     labels: [
                         'CO1',
                         'CO2',
@@ -102,36 +102,24 @@ export const PieChart = (props) => {
                         label: `${studentName}`,
                         data: [co1, co2, co3, co4, coTotal],
                         fill: true,
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(153, 102, 255)',
-                        ],
-                        // borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
                         pointBackgroundColor: 'rgb(255, 99, 132)',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: 'rgb(255, 99, 132)'
                     },
-                        // {
-                        //     label: `Top Scorer`,
-                        //     data: [bCo1, bCo2, bCo3, bCo4, bCoTotal],
-                        //     fill: true,
-                        //     backgroundColor: [
-                        //         'rgb(255, 99, 132)',
-                        //         'rgb(54, 162, 235)',
-                        //         'rgb(255, 205, 86)',
-                        //         'rgb(75, 192, 192)',
-                        //         'rgb(153, 102, 255)',
-                        //     ],
-                        //     borderColor: 'rgb(54, 162, 235)',
-                        //     pointBackgroundColor: 'rgb(54, 162, 235)',
-                        //     pointBorderColor: '#fff',
-                        //     pointHoverBackgroundColor: '#fff',
-                        //     pointHoverBorderColor: 'rgb(54, 162, 235)'
-                        // }
+                    {
+                        label: `Top Scorer`,
+                        data: [bCo1, bCo2, bCo3, bCo4, bCoTotal],
+                        fill: true,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        pointBackgroundColor: 'rgb(54, 162, 235)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(54, 162, 235)'
+                    }
                     ]
                 }}
                     height={600}
@@ -157,7 +145,7 @@ export const PieChart = (props) => {
         </div>
     )
 }
-export default PieChart
+export default BarChart
 
 export const getServerSideProps = async (context) => {
     const res = await fetch(`http://localhost:3000/api/student/${searchStudent.values.student_id}`)

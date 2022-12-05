@@ -1,9 +1,9 @@
 import styles from '../styles/co.module.css'
 import { useFormik } from 'formik'
-import BarChart from '../components/BarChart';
-import RadarChart from '../components/RadarChart';
-import PieChart from '../components/PieChart';
-import PolarChart from '../components/PolarChart';
+import BarChart from '../components/charts/BarChart';
+import RadarChart from '../components/charts/RadarChart';
+import PieChart from '../components/charts/PieChart';
+import PolarChart from '../components/charts/PolarChart';
 export const getStaticProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/student/1531176')
     const studentData = await res.json()
@@ -30,9 +30,10 @@ const Co = ({ studentData }) => {
             // <h1>hello</h1>
             <div className={styles.charts}>
                 <RadarChart props={searchStudent.values.student_id} />
+                <PolarChart props={searchStudent.values.student_id} />
                 <BarChart props={searchStudent.values.student_id} />
                 <PieChart props={searchStudent.values.student_id} />
-                <PolarChart props={searchStudent.values.student_id} />
+
             </div>
 
         )
@@ -49,7 +50,7 @@ const Co = ({ studentData }) => {
         </form>
         <div className={styles.container}>
             {searchStudent.values.student_id.length >= 7 ? callChart() : <></>}
-            <p>Some Example ID : 1920498 , 1810471 ,2022759</p>
+            <p>Some Example ID : 1920498 , 1810471 , 2022759 , 2021591</p>
             {/* <RadarChart props={studentData} /> */}
             {/* {callChart()} */}
         </div>

@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useState, useEffect } from 'react'
 import { Radar } from 'react-chartjs-2'
-import styles from '../styles/co.module.css'
+import styles from '../../styles/co.module.css'
 
 export const RadarChart = (props) => {
     console.log(props.props);

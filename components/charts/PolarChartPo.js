@@ -16,7 +16,7 @@ import { Radar, Bar, Pie, Polar } from 'react-chartjs-2'
 //     LinearScale,
 //     CategoryScale
 // )
-import styles from '../styles/co.module.css'
+import styles from '../../styles/co.module.css'
 
 export const PolarChart = (props) => {
     console.log(props.props);
@@ -66,10 +66,10 @@ export const PolarChart = (props) => {
         // console.log(data.students)
         if (data.students) {
             sData = data.students;
-            co1 = (sData.CO1 / 110) * 100;
-            co2 = (sData.CO2 / 40) * 100;
-            co3 = (sData.CO3 / 50) * 100;
-            co4 = (sData.CO4 / 50) * 100;
+            (sData.CO1 / 110) * 100 >= 40 ? co1 = (sData.CO1 / 110) * 100 : co1 = 0;
+            (sData.CO2 / 40) * 100 >= 40 ? co2 = (sData.CO2 / 40) * 100 : co2 = 0;
+            (sData.CO3 / 50) * 100 >= 40 ? co3 = (sData.CO3 / 50) * 100 : co3 = 0;
+            (sData.CO4 / 50) * 100 >= 40 ? co4 = (sData.CO4 / 50) * 100 : co4 = 0;
             coTotal = ((co1 + co2 + co3 + co4) / 4);
             studentName = sData.student_name;
             // console.log(co1, co2, co3, co4, coTotal, studentName)
@@ -90,17 +90,17 @@ export const PolarChart = (props) => {
             <div className={styles.bgWhite}>
                 <Polar data={{
                     labels: [
-                        'CO1',
-                        'CO2',
-                        'CO3',
-                        'CO4',
-                        'Average Semester total',
+                        'PO1',
+                        'PO2',
+                        'PO3',
+                        'PO4',
+                        // 'Average Semester total',
                         // 'Grade',
                         // 'Average'
                     ],
                     datasets: [{
                         label: `${studentName}`,
-                        data: [co1, co2, co3, co4, coTotal],
+                        data: [co1, co2, co3, co4],
                         fill: true,
                         backgroundColor: [
                             'rgb(255, 99, 132)',
