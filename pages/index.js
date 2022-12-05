@@ -1,21 +1,14 @@
 
 import Image from 'next/image'
-import ArticleList from '../components/ArticleList'
 import { useUser } from '@auth0/nextjs-auth0';
-// import 'bootstrap/dist/css/bootstrap.css';
 import BarChart from '../components/BarChart';
 import RadarChart from '../components/RadarChart';
 import PieChart from '../components/PieChart';
 import PolarChart from '../components/PolarChart';
 import styles from '../styles/Home.module.css'
-
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
-
-export default function Home({ articles }) {
+export default function Home({ }) {
   const { user, error, isLoading } = useUser();
 
-  // console.log(articles)
   if (isLoading) {
     return <h1>Loading...</h1>
   }
@@ -27,7 +20,6 @@ export default function Home({ articles }) {
     return (
       <div className={styles.container}>
         <h1>Welcome {user.nickname}!</h1>
-        {/* <PieChart props={2022759} /> */}
         <div className={styles.Bcard}>Total Students : 120 </div>
         <div className={styles.Bcard}>Total Courses : 10 </div>
         <div className={styles.Bcard}>Total Faculties : 20 </div>
@@ -44,11 +36,6 @@ export default function Home({ articles }) {
       </div>
     )
   }
-
-
-
-
-
   else {
     return (
       <div className={styles.container}>
