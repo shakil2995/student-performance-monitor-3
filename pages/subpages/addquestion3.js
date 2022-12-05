@@ -7,9 +7,9 @@ function YoutubeForm() {
     const courseDetails = useFormik({
         initialValues: {
             // uniqueId: 'unique_id',
-            course_id: 'course_id',
-            semester: 'semester',
-            section: 'section',
+            course_id: '',
+            semester: '',
+            section: '',
             questions: {
                 data:
                     [
@@ -24,30 +24,31 @@ function YoutubeForm() {
             initialValues={
                 {
                     ...courseDetails.values,
-                }}
+                }
+            }
             onSubmit={values =>
                 console.log("Form values", values)
             }>
-            <Form >
+            <Form className={styles.formContainer}>
                 <div className={styles.formItem}>
-                    <label htmlFor="course_id">course_id : </label>
-                    <Field type="text" id="course_id" name="course_id" placeholder="Enter your course_id"
+                    <label htmlFor="course_id">Course Id : </label>
+                    <Field className={styles.inputField} type="text" id="course_id" name="course_id" placeholder="eg: CSE-101"
                     />
                 </div>
 
                 <div className={styles.formItem}>
-                    <label htmlFor="semester">semester : </label>
-                    <Field type="text" id="semester" name="semester" placeholder="Enter your semester"
+                    <label htmlFor="semester">Semester : </label>
+                    <Field className={styles.inputField} type="text" id="semester" name="semester" placeholder="Enter your semester"
                     />
                 </div>
 
                 <div className={styles.formItem}>
-                    <label htmlFor="section">section : </label>
-                    <Field type="text" id="section" name="section" placeholder="Enter your section"
+                    <label htmlFor="section">Section : </label>
+                    <Field className={styles.inputField} type="text" id="section" name="section" placeholder="Enter your section"
                     />
                 </div>
 
-                <FieldArray name="questions.data" >
+                <FieldArray className={styles.formItem} name="questions.data" >
                     {
                         (FieldArrayProps) => {
                             // console.log("FieldArrayProps", FieldArrayProps.form.values);
@@ -55,23 +56,27 @@ function YoutubeForm() {
                             const { values } = form;
                             const { questions } = values;
                             return (
-                                <div>
+                                <div className={styles.questionField}>
                                     {
                                         questions.data.map((phNumber, index) => (
-                                            <div key={index}>
-                                                <label htmlFor="Question"> Question : </label>
-                                                <Field as="textarea" name={`questions.data[${index}].question`} />
+                                            <div className={styles.margin} key={index}>
+                                                <div className={styles.question}>
+                                                    <label htmlFor="Question"> Question : </label>
+                                                    <Field className={styles.qinputField} as="textarea" name={`questions.data[${index}].question`} />
 
-                                                <label htmlFor="marks"> marks : </label>
-                                                <Field name={`questions.data[${index}].marks`} />
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="marks"> marks : </label>
+                                                    <Field className={styles.inputField} name={`questions.data[${index}].marks`} />
 
-                                                <label htmlFor="co"> co : </label>
-                                                <Field name={`questions.data[${index}].co`} />
-                                                {
-                                                    index > 0 && <button type="button" onClick={() => remove(index)}>-</button>
-                                                }
-                                                <button type="button" onClick={() => push('')}>+</button>
-                                                {/* <button type="button" onClick={() => remove('')}>-</button> */}
+                                                    <label htmlFor="co"> co : </label>
+                                                    <Field className={styles.inputField} name={`questions.data[${index}].co`} />
+                                                    {
+                                                        index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                    }
+                                                    <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                </div>
+
                                             </div>
                                         ))
                                     }
@@ -80,7 +85,7 @@ function YoutubeForm() {
                         }
                     }
                 </FieldArray>
-                <button type="submit">Submit</button>
+                <button className={styles.submitbutton} type="submit">Submit</button>
             </Form>
         </Formik>
     )
