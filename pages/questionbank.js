@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styles from '../styles/QuestionBank.module.css'
 import Viewquestion from './subpages/viewquestion';
 import PrismaAdd from './subpages/prismaAdd';
+import YoutubeForm from './subpages/addquestion2';
 
 export default function Questionbank({  }) {
     const { user, error, isLoading } = useUser();
@@ -17,8 +18,8 @@ export default function Questionbank({  }) {
         <>
         <div className={styles.container}>
           <h1>Welcome {user.nickname}!</h1>
-          {/* <Link className={styles.loginContainer}  href="/subpages/addquestion">Add Question</Link> */}
-          <Link className={styles.loginContainer}  href="/subpages/prismaAdd">Add Question</Link>
+          <Link className={styles.loginContainer}  href="/subpages/addquestion3">Add Question</Link>
+          {/* <Link className={styles.loginContainer}  href="/subpages/prismaAdd">Add Question</Link> */}
          
           {/* <Link className={styles.loginContainer}  href="http://localhost:5555/">Add Question Using Prisma</Link> */}
             <Link className={styles.loginContainer} href="/subpages/viewquestion">View Question</Link>

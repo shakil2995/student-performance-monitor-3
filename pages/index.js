@@ -2,7 +2,11 @@
 import Image from 'next/image'
 import ArticleList from '../components/ArticleList'
 import { useUser } from '@auth0/nextjs-auth0';
+// import 'bootstrap/dist/css/bootstrap.css';
 import styles from '../styles/Home.module.css'
+
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 
 export default function Home({ articles }) {
   const { user, error, isLoading } = useUser();
