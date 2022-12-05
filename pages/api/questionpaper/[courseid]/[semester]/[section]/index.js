@@ -27,34 +27,35 @@ export default async function SecretRoute(req, res) {
         })
         res.json({ questionpapers });
     }
-    if (req.method === 'POST') {
-        console.log(req.body)
-        let bodyValues = req.body
-        const questionpapers = await QuestionPaper.create({
-            data: bodyValues
-            // data: {
-            //     uniqueId: 'CSE200summer222',
-            //     course_id: 'CSE200',
-            //     semester: 'summer22',
-            //     section: 2,
-            //     question: {
-            //         createMany: {
-            //             data: [
-            //                 {
-            //                     question: "q1",
-            //                     marks: 5,
-            //                     co: 1
-            //                 },
-            //                 {
-            //                     question: "q2",
-            //                     marks: 6,
-            //                     co: 2
-            //                 },
-            //             ]
-            //         }
-            //     }
 
-            // }
+    if (req.method === 'POST') {
+        let bodyValues = req.body
+        // console.log(bodyValues.course_id)
+        let course_id = bodyValues.course_id
+        let semester = bodyValues.semester
+        let section = parseInt(bodyValues.section)
+        let uniqueId = course_id + semester + section
+        let question = bodyValues.question
+        // console.log(question)
+        const newQuestions = bodyValues.questions.data.map((question) => {
+            return {
+                question: question.question,
+                marks: parseInt(question.marks),
+                co: parseInt(question.co)
+            }
+        })
+        const questionpapers = await QuestionPaper.create({
+            data: {
+                uniqueId: uniqueId,
+                course_id: course_id,
+                semester: semester,
+                section: section,
+                question: {
+                    createMany: {
+                        data: newQuestions
+                    }
+                }
+            }
         })
         res.json({ bodyValues });
     }

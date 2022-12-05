@@ -2,7 +2,61 @@ import React from "react";
 import { Formik, Form, Field, FieldArray, useFormik } from "formik";
 // import 'bootstrap/dist/css/bootstrap.css';
 import styles from '../../styles/formFields.module.css'
-function YoutubeForm() {
+function postData(props) {
+    console.log("check")
+    console.log(props)
+    // iterate over the array and create a new array with the values you want
+    const newQuestions = props.questions.data.map((question) => {
+        return {
+            question: question.question,
+            marks: question.marks,
+            co: question.co
+        }
+    })
+    // console.log(newQuestions)
+
+
+
+
+    fetch('http://localhost:3000/api/questionpaper/x/x/1', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ...props
+
+            // {
+            //     "uniqueId": "CSE200summer222",
+            //     "course_id": "CSE200",
+            //     "semester": "summer22",
+            //     "section": 2,
+            //     "question": {
+            //         "createMany": {
+            //             "data": [
+            //                 {
+            //                     "question": "q1",
+            //                     "marks": 5,
+            //                     "co": 1
+            //                 },
+            //                 {
+            //                     "question": "q2",
+            //                     "marks": 6,
+            //                     "co": 2
+            //                 }
+            //             ]
+            //         }
+            //     }
+            // }
+        })
+        // .then(function (response) {
+        //     console.log(response);
+        // })
+
+
+    })
+}
+function QuestionPaper() {
 
     const courseDetails = useFormik({
         initialValues: {
@@ -18,6 +72,9 @@ function YoutubeForm() {
             },
             submit: 'Submit'
         },
+        onSubmit: values => {
+            console.log("Form values", values)
+        }
     })
     return (
         <Formik
@@ -27,7 +84,7 @@ function YoutubeForm() {
                 }
             }
             onSubmit={values =>
-                console.log("Form values", values)
+                postData(values)
             }>
             <Form className={styles.formContainer}>
                 <div className={styles.formItem}>
@@ -67,10 +124,10 @@ function YoutubeForm() {
                                                 </div>
                                                 <div>
                                                     <label htmlFor="marks"> marks : </label>
-                                                    <Field className={styles.inputField} name={`questions.data[${index}].marks`} />
+                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].marks`} />
 
                                                     <label htmlFor="co"> co : </label>
-                                                    <Field className={styles.inputField} name={`questions.data[${index}].co`} />
+                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].co`} />
                                                     {
                                                         index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
                                                     }
@@ -85,9 +142,9 @@ function YoutubeForm() {
                         }
                     }
                 </FieldArray>
-                <button className={styles.submitbutton} type="submit">Submit</button>
+                <button className={styles.submitbutton} type="submit">{courseDetails.values.submit}</button>
             </Form>
         </Formik>
     )
 }
-export default YoutubeForm;
+export default QuestionPaper;
