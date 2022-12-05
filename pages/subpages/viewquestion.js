@@ -1,5 +1,6 @@
-
+import Search from '../../components/Search';
 import styles from '../../styles/QuestionBank.module.css'
+import Link from 'next/link'
 export const getStaticProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/questionpaper')
     const questionpapers = await res.json()
@@ -53,16 +54,19 @@ const Viewquestion = ({ questionpapers }) => {
     // console.log(questionpapers.questionpapers)
     return (
         <div>
+            <Search />
             <h3 className={styles.topCard}>Question Papers</h3>
+            {/* <Link className={styles.loginContainer} href="/subpages/addquestion">Add Question</Link>
+            <Link className={styles.loginContainer} href="/subpages/addquestion">Search Question</Link> */}
             <div >
                 {
                     questionpapers.questionpapers.map((questionpaper, index) => (
                         <div className={styles.qcard} key={index}>
-                            <div>
+                            <div className={styles.innerBorder}>
                                 {/* {console.log(questionpaper.index.id)} */}
-                                <h3 className={styles.center}>{questionpaper.course_id}</h3>
-                                <p className={styles.center}>Semester :{questionpaper.semester} </p>
-                                <p className={styles.center}> Section :{questionpaper.section}</p>
+                                <h3 className={styles.center}>Coure Name : {questionpaper.course_id}</h3>
+                                <p className={styles.center}>Semester : {questionpaper.semester} </p>
+                                <p className={styles.center}> Section : {questionpaper.section}</p>
 
                                 {
                                     // map through question array
@@ -87,3 +91,23 @@ const Viewquestion = ({ questionpapers }) => {
     )
 }
 export default Viewquestion
+
+
+
+// import Search from '../../components/Search';
+// import QuestionList from '../../components/QuestionList';
+// import styles from '../../styles/QuestionBank.module.css'
+// import Link from 'next/link'
+
+// import React from 'react'
+
+// export default function viewquestion() {
+//     return (
+//         <div>
+//             <Search />
+//             <QuestionList />
+
+//         </div>
+
+//     )
+// }

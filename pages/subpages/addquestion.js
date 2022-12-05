@@ -1,118 +1,150 @@
-import { useFormik } from 'formik'
-// import { PrismaClient } from '@prisma/client'
-// const prisma = new PrismaClient()
-// import QuestionField from '../components/QuestionField'
-import styles from '../../styles/QuestionBank.module.css'
-const Addquestion = ({ children }) => {
-
-    // async function addQuestionPaper() {
-    //     await prisma.questionPaper.create({
-    //         data: {
-    //             course_id: formik.values.course_id,
-    //             semester: formik.values.semester,
-    //             section: formik.values.section,
-    //             uniqueId: formik.values.course_id + formik.values.semester + formik.values.section,
-    //             question: {
-    //                 create: [
-    //                     {
-    //                         question: formik.values.question,
-    //                         option1: formik.values.option1,
-    //                         option2: formik.values.option2,
-    //                         option3: formik.values.option3,
-    //                         option4: formik.values.option4,
-    //                         answer: formik.values.answer,
-    //                     },
-    //                 ],
-    //             },
-
-    //         }
-    //     })
-    // }
-
-
-
-
-
-    function addQuestion(params) {
-        let arr = []
-        for (let i = 1; i <= params; i++) {
-            arr.push(<QuestionField
-                props={questionDetails}
-                numbers={i}
-            />)
+import React from "react";
+import { Formik, Form, Field, FieldArray, useFormik } from "formik";
+// import 'bootstrap/dist/css/bootstrap.css';
+import styles from '../../styles/formFields.module.css'
+function postData(props) {
+    console.log("check")
+    console.log(props)
+    // iterate over the array and create a new array with the values you want
+    const newQuestions = props.questions.data.map((question) => {
+        return {
+            question: question.question,
+            marks: question.marks,
+            co: question.co
         }
-        return (
-            arr
-        )
+    })
+    // console.log(newQuestions)
 
-    }
+
+
+
+    fetch('http://localhost:3000/api/questionpaper/x/x/1', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ...props
+
+            // {
+            //     "uniqueId": "CSE200summer222",
+            //     "course_id": "CSE200",
+            //     "semester": "summer22",
+            //     "section": 2,
+            //     "question": {
+            //         "createMany": {
+            //             "data": [
+            //                 {
+            //                     "question": "q1",
+            //                     "marks": 5,
+            //                     "co": 1
+            //                 },
+            //                 {
+            //                     "question": "q2",
+            //                     "marks": 6,
+            //                     "co": 2
+            //                 }
+            //             ]
+            //         }
+            //     }
+            // }
+        })
+        // .then(function (response) {
+        //     console.log(response);
+        // })
+
+
+    })
+}
+function QuestionPaper() {
+
     const courseDetails = useFormik({
         initialValues: {
             // uniqueId: 'unique_id',
-            course_id: 'course_id',
-            semester: 'semester',
-            section: 'section',
-            question: {
+            course_id: '',
+            semester: '',
+            section: '',
+            questions: {
                 data:
                     [
-                        { question: 'q1', marks: '5', co: '2' },
-                        { question: 'q2', marks: '10', co: '1' }
+                        { question: '', marks: '', co: '' },
                     ]
             },
             submit: 'Submit'
         },
         onSubmit: values => {
-            courseDetails.values.submit = 'Submitted'
-            let uniqueId = values.course_id + values.semester + values.section
-            // console.log(courseDetails.values);
-            console.log(questionDetails.values);
-        },
+            console.log("Form values", values)
+        }
     })
-    const questionDetails = useFormik({
-
-        initialValues: {
-            // uniqueId: courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section,
-            question: [],
-            marks: [],
-            co: [],
-            submit: 'Submit',
-        },
-        onSubmit: values => {
-
-            // questionDetails.values.submit = 'Submitted'
-            // console.log(questionDetails.values);
-        },
-    })
-
-
     return (
-        <form onSubmit={courseDetails.handleSubmit} className={styles.formContainer}>
-            <div className={styles.courseField}>
-                Course ID :<input className={styles.formItem} placeholder="Course ID" type="text" required name="course_id" onChange={courseDetails.handleChange} value={courseDetails.values.course_id} />
-                Semester :<input className={styles.formItem} placeholder="Semester" type="text" required name="semester" onChange={courseDetails.handleChange} value={courseDetails.values.semester} />
-                Section :<input className={styles.formItem} placeholder="Section" type="text" required name="section" onChange={courseDetails.handleChange} value={courseDetails.values.section} />
-                Unique ID (auto generated):<input className={styles.formItem} placeholder="Unique ID" type="text" required name="uniqueId" onChange={courseDetails.handleChange} value={courseDetails.values.course_id + courseDetails.values.semester + courseDetails.values.section} />
-                Total Questions :<input className={styles.formItem} placeholder="Number of Questions" type="number" required name="totalQuestions" min="0" onChange={courseDetails.handleChange} value={courseDetails.values.totalQuestions} />
-                {addQuestion(courseDetails.values.totalQuestions)}
-            </div>
+        <Formik
+            initialValues={
+                {
+                    ...courseDetails.values,
+                }
+            }
+            onSubmit={values =>
+                postData(values)
+            }>
+            <Form className={styles.formContainer}>
+                <div className={styles.formItem}>
+                    <label htmlFor="course_id">Course Id : </label>
+                    <Field className={styles.inputField} type="text" id="course_id" name="course_id" placeholder="eg: CSE-101"
+                    />
+                </div>
 
-            <button className={styles.formButton} type="submit">{courseDetails.values.submit}</button>
-        </form>
-    );
+                <div className={styles.formItem}>
+                    <label htmlFor="semester">Semester : </label>
+                    <Field className={styles.inputField} type="text" id="semester" name="semester" placeholder="Enter your semester"
+                    />
+                </div>
 
-}
-export default Addquestion
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Section : </label>
+                    <Field className={styles.inputField} type="text" id="section" name="section" placeholder="Enter your section"
+                    />
+                </div>
 
-const QuestionField = (props, i) => {
-    let prop = props.props.values
-    prop.uniqueId = prop.course_id + prop.semester + prop.section
-    // console.log(prop.totalQuestions);
-    return (
-        <div className={styles.QuestionField} key={i}>
-            Question: <textarea className={styles.question} placeholder="Question" type="text-field" required name="question" onChange={props.props.handleChange} value={props.props.values.question[i]} />
-            Marks: <input className={styles.questionItem} placeholder="Marks" type="number" required name="marks" onChange={props.props.handleChange} value={props.props.values.marks[i]} />
-            Co: <input className={styles.questionItem} placeholder="CO" type="number" required name="co" min="1" max="4" onChange={props.props.handleChange} value={props.props.values.co[i]} />
-        </div>
+                <FieldArray className={styles.formItem} name="questions.data" >
+                    {
+                        (FieldArrayProps) => {
+                            // console.log("FieldArrayProps", FieldArrayProps.form.values);
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { questions } = values;
+                            return (
+                                <div className={styles.questionField}>
+                                    {
+                                        questions.data.map((phNumber, index) => (
+                                            <div className={styles.margin} key={index}>
+                                                <div className={styles.question}>
+                                                    <label htmlFor="Question"> Question : </label>
+                                                    <Field className={styles.qinputField} as="textarea" name={`questions.data[${index}].question`} />
 
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="marks"> marks : </label>
+                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].marks`} />
+
+                                                    <label htmlFor="co"> co : </label>
+                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].co`} />
+                                                    {
+                                                        index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                    }
+                                                    <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                </div>
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <button className={styles.submitbutton} type="submit">{courseDetails.values.submit}</button>
+            </Form>
+        </Formik>
     )
 }
+export default QuestionPaper;

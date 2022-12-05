@@ -124,9 +124,23 @@
     background-color: white;
     border: 1px solid #eaeaea;
     text-decoration: none;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     transition: color 0.15s ease, border-color 0.15s ease;
     max-width: 1400px;
+    min-width: 800px;
+
+    /* min-width: 1vw; */
+}
+
+.innerBorder {
+    border: 1px solid #2d2d2d;
+    margin: 10px;
+    padding: 10px;
+    min-height: 600px;
+    min-width: 800px;
+    /* border-radius: 10px; */
+    transition: color 0.15s ease, border-color 0.15s ease;
+
 }
 
 .qcard:hover,
