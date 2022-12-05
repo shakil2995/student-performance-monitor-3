@@ -26,7 +26,7 @@ export const RadarChart = (props) => {
     let studentName;
 
     let bCo1 = (107 / 110) * 100;
-    let bCo2 = (30 / 40) * 100;
+    let bCo2 = (35 / 40) * 100;
     let bCo3 = (48 / 50) * 100;
     let bCo4 = (43 / 50) * 100;
     let bCoTotal = ((bCo1 + bCo2 + bCo3 + bCo4) / 4);
