@@ -1,5 +1,7 @@
 import Search from '../../components/Search';
 import styles from '../../styles/QuestionBank.module.css'
+import style from '../../styles/co.module.css'
+
 import Link from 'next/link'
 export const getStaticProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/questionpaper')
@@ -54,7 +56,8 @@ const Viewquestion = ({ questionpapers }) => {
     // console.log(questionpapers.questionpapers)
     return (
         <div>
-            <Search />
+            {/* <Search /> */}
+            <Link href="/subpages/addquestion"><button className={style.formButton} >Add Question</button></Link>
             <h3 className={styles.topCard}>Question Papers</h3>
             {/* <Link className={styles.loginContainer} href="/subpages/addquestion">Add Question</Link>
             <Link className={styles.loginContainer} href="/subpages/addquestion">Search Question</Link> */}

@@ -59,6 +59,7 @@ const QuestionList = ({ questionpapers }) => {
             <Link className={styles.loginContainer} href="/subpages/addquestion">Add Question</Link>
             <Link className={styles.loginContainer} href="/subpages/addquestion">Search Question</Link>
             <div >
+
                 {
                     questionpapers.questionpapers.map((questionpaper, index) => (
                         <div className={styles.qcard} key={index}>

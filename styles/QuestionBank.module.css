@@ -137,9 +137,10 @@
     margin: 10px;
     padding: 10px;
     min-height: 600px;
-    min-width: 800px;
+    min-width: 900px;
     /* border-radius: 10px; */
     transition: color 0.15s ease, border-color 0.15s ease;
+    align-items: center;
 
 }
 

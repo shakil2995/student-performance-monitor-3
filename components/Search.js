@@ -40,7 +40,7 @@ const Co = ({ studentData }) => {
             </div>
 
             <button className={styles.formButton} type="submit">{searchPaper.values.submit}</button>
-            <button className={styles.formButton} > <Link href="/subpages/addquestion">Add Question</Link></button>
+            {/* <button className={styles.formButton} > <Link href="/subpages/addquestion">Add Question</Link></button> */}
 
         </form>
         <div className={styles.container}>
