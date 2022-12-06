@@ -22,34 +22,106 @@ export default async function SecretRoute(req, res) {
         })
         res.json({ courseoutline });
     }
-    // if (req.method === 'POST') {
-    //     const  courseoutline = await  CourseOutline.create({
-    //         data: {
-    //             uniqueId: 'CSE200summer222',
-    //             course_id: 'CSE200',
-    //             semester: 'summer22',
-    //             section: 2,
-    //             question: {
-    //                 createMany: {
-    //                     data: [
-    //                         {
-    //                             question: "q1",
-    //                             marks: 5,
-    //                             co: 1
-    //                         },
-    //                         {
-    //                             question: "q2",
-    //                             marks: 6,
-    //                             co: 2
-    //                         },
-    //                     ]
-    //                 }
-    //             }
+    if (req.method === 'POST') {
+        let bodyValues = req.body
+        console.log(bodyValues.courseoutline[0].course)
+        // let course = bodyValues.course
+        // let faculty = bodyValues.faculty
+        // let objectives = bodyValues.objectives
+        // let policy = bodyValues.policy
+        // let outcome = bodyValues.outcome
+        // let schedule = bodyValues.schedule
+        // let resource = bodyValues.resource
 
-    //         }
-    //     })
-    //     res.json({  courseoutline });
-    // }
+        // const newCourse = bodyValues.course[0].map((c) => {
+        //     return {
+        //         courseCode: c.courseCode,
+        //         semester: c.semester,
+        //         section: c.section,
+        //         courseTitle: c.courseTitle,
+        //         marks: parseInt(c.marks),
+        //     }
+        // })
+        // const newFaculty = bodyValues.faculty[0].map((c) => {
+        //     return {
+        //         name: c.name,
+        //         designation: c.designation,
+        //         department: c.department,
+        //     }
+        // })
+        // const newObjectives = bodyValues.objectives.map((c) => {
+        //     return {
+        //         objective: c.name,
+        //     }
+        // })
+        // const newPolicy = bodyValues.policy.map((c) => {
+        //     return {
+        //         policy: c.policy,
+        //     }
+        // })
+        // const newOutcome = bodyValues.outcome.map((c) => {
+        //     return {
+        //         outcome: c.outcome,
+        //     }
+        // })
+        // const newSchedule = bodyValues.schedule.map((c) => {
+        //     return {
+        //         week: c.week,
+        //         topic: c.topic,
+        //         readings: c.readings,
+        //     }
+        // })
+        // const newResource = bodyValues.resource.map((c) => {
+        //     return {
+        //         title: c.title,
+        //     }
+        // })
+
+
+        // const courseoutline = await CourseOutline.create({
+        //     data: {
+        //         course: {
+        //             createMany: {
+        //                 data: newCourse
+        //             }
+        //         },
+        //         faculty: {
+        //             createMany: {
+        //                 data: newFaculty
+        //             }
+        //         },
+        //         objectives: {
+        //             createMany: {
+        //                 data: newObjectives
+        //             }
+        //         },
+
+        //         policy: {
+        //             createMany: {
+        //                 data: newPolicy
+        //             }
+        //         },
+
+        //         outcome: {
+        //             createMany: {
+        //                 data: newOutcome
+        //             }
+        //         },
+        //         schedule: {
+        //             createMany: {
+        //                 data: newSchedule
+        //             }
+        //         },
+        //         resource: {
+        //             createMany: {
+        //                 data: newResource
+        //             }
+        //         },
+        //     }
+        // })
+        // res.json({ courseoutline });
+        res.json({ bodyValues });
+    }
 };
 // });
 
@@ -83,4 +155,179 @@ export default async function SecretRoute(req, res) {
 //         }
 //     })
 //     res.json({ bodyValues });
+// }
+
+// {
+// 	"courseoutline": [
+// 		{
+// 			"id": 1,
+// 			"course": [
+// 				{
+// 					"id": 1,
+// 					"courseCode": "Cse303",
+// 					"semester": "Summer22",
+// 					"section": 1,
+// 					"courseTitle": "Database Management",
+// 					"marks": 100,
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"faculty": [
+// 				{
+// 					"id": 1,
+// 					"name": "Dr. Sadita Khan",
+// 					"designation": "Assistant Professor",
+// 					"department": "Computer Science & Engineering",
+// 					"email": "sadita@iub.edu.bd",
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"objectives": [
+// 				{
+// 					"id": 1,
+// 					"objective": "Understand the basic concepts of web application development.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 2,
+// 					"objective": "Understand the basic concepts of web application development tools.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 3,
+// 					"objective": "Understand the basic concepts of web application development frameworks.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 4,
+// 					"objective": "Understand the basic concepts of web application security.",
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"policy": [
+// 				{
+// 					"id": 1,
+// 					"policy": "70% attendance is mandatory.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 2,
+// 					"policy": "Students are expected to be on time for the class.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 3,
+// 					"policy": "Students are expected to be polite and respectful to the instructor and other students.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 4,
+// 					"policy": "Students are expected to be honest and ethical in their academic work.",
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"outcome": [
+// 				{
+// 					"id": 1,
+// 					"outcome": "Develop web applications using HTML, CSS, and JavaScript.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 2,
+// 					"outcome": "Develop web applications using React.js.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 3,
+// 					"outcome": "Develop web applications using Node.js.",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 4,
+// 					"outcome": "Develop web applications using Node.js.",
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"schedule": [
+// 				{
+// 					"id": 1,
+// 					"week": "Week 1",
+// 					"topic": "Web App",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 2,
+// 					"week": "Week 2",
+// 					"topic": "HTML",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 3,
+// 					"week": "Week 3",
+// 					"topic": "CSS",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 4,
+// 					"week": "Week 4",
+// 					"topic": "JS",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 5,
+// 					"week": "Week 5",
+// 					"topic": "React",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 6,
+// 					"week": "Week 6",
+// 					"topic": "Node",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 7,
+// 					"week": "Week 7",
+// 					"topic": "Express",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 8,
+// 					"week": "Week 8",
+// 					"topic": "MongoDB",
+// 					"readings": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				}
+// 			],
+// 			"resource": [
+// 				{
+// 					"id": 1,
+// 					"title": "Introduction to HTML",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 2,
+// 					"title": "Introduction to CSS",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 3,
+// 					"title": "Introduction to JavaScript",
+// 					"courseOutlineId": 1
+// 				},
+// 				{
+// 					"id": 4,
+// 					"title": "Introduction to React.js",
+// 					"courseOutlineId": 1
+// 				}
+// 			]
+// 		}
+// 	]
 // }

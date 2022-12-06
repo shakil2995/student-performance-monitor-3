@@ -13,11 +13,6 @@ function postData(props) {
             co: question.co
         }
     })
-    // console.log(newQuestions)
-
-
-
-
     fetch('http://localhost:3000/api/questionpaper/x/x/1', {
         method: 'POST',
         headers: {

@@ -2,6 +2,7 @@ import Search from '../../components/Search';
 import styles from '../../styles/QuestionBank.module.css'
 import style from '../../styles/co.module.css'
 import CourseOutline from '../../components/CourseOutline';
+import Link from 'next/link'
 
 export const getStaticProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/outline')
@@ -14,8 +15,10 @@ export const getStaticProps = async (context) => {
 }
 const Viewoutline = ({ outlines }) => {
     // console.log(outlines.courseoutline);
-    return (<>
+    return (<div>
+        <Link href="/subpages/addoutline"><button className={style.formButton} >Add Outline</button></Link>
         {
+
             outlines.courseoutline.map((outline, index) => (
                 <div key={index}>
                     <h3 className={styles.topCard}>Outlines</h3>
@@ -24,7 +27,7 @@ const Viewoutline = ({ outlines }) => {
             ))
 
         }
-    </>
+    </div>
     )
 }
 export default Viewoutline
