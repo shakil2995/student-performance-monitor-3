@@ -1,0 +1,84 @@
+.container {
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    margin: 10px;
+    padding: 50px;
+}
+
+.subtitle {
+    letter-spacing: 1.5px;
+}
+
+.title {
+    font-size: 1.9rem;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.objectives {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: .6;
+}
+
+
+.objectives li {
+    text-align: left;
+    list-style: number;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: .5;
+}
+
+.objectives h3 {
+    text-align: left;
+
+}
+
+.objectives h4 {
+    text-align: left;
+
+}
+
+.outline {
+    margin: 20px;
+    line-height: 0.5;
+    text-align: left;
+}
+
+.instructor {
+    margin: 20px;
+    line-height: 0.5;
+    text-align: left;
+}
+
+.table {
+    margin: 20px;
+    text-align: left;
+}
+
+.table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+
+.table th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 300px;
+}

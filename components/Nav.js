@@ -16,7 +16,7 @@ const Nav = ({ children }) => {
                 {/* <li>
                     <Link className={router.pathname == "/" ? navStyles.active : null} href="/">Home</Link>
                 </li> */}
-                {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/outline" ? navStyles.active : null} href="/outline">Course Outline</Link></li> : null) : null}
+                {user ? (user.nickname == 'faculty' ? <li> <Link className={router.pathname == "/outline" ? navStyles.active : null} href="/subpages/viewoutline">Course Outline</Link></li> : null) : null}
                 {<li> <Link className={router.pathname == "/questionbank" ? navStyles.active : null} href="/subpages/viewquestion">Question Bank</Link></li>}
                 {/* {<li> <Link className={router.pathname == "/questionbank" ? navStyles.active : null} href="/questionbank">Question Bank</Link></li>} */}
                 {user ? <li> <Link className={router.pathname == "/co" ? navStyles.active : null} href="/co">CO</Link></li> : null}
