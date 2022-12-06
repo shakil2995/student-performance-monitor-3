@@ -118,7 +118,7 @@
 
 .qcard {
     margin: 1rem;
-    padding: 1.5rem 2.5rem;
+    padding: 1.5rem;
     text-align: left;
     color: black;
     background-color: white;
@@ -148,8 +148,9 @@
 .qcard:focus,
 .qcard:active {
     color: #020202;
-    background-color: #e8e8e8;
-    box-shadow: #ffffff 0px 0px 15px 0px;
+    background-color: #ffffff;
+    box-shadow: #ffffff 0px 0px 5px 0px;
+    /* margin: 1.5rem; */
     /* border: 5px solid #ffffff; */
 }
 
