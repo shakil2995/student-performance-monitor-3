@@ -17,6 +17,7 @@ export default async function StudentInfo(req, res) {
                 CO3: true,
                 CO4: true,
                 grade: true,
+                // _count: true
             },
             // where: {
             //     course_id: 1,

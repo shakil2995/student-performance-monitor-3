@@ -37,7 +37,7 @@
 
 .objectives li {
     text-align: left;
-    list-style: number;
+    list-style: none;
     margin: 0 10px 10px 0;
     padding: 10px;
     border-radius: 5px;
@@ -67,17 +67,23 @@
 }
 
 .table {
+    gap: 0;
     margin: 20px;
     text-align: left;
+    border-spacing: 2px;
 }
 
 .table td {
+    border: 0px;
+    border-spacing: 0px;
     padding: 10px;
     border: 1px solid #ccc;
     width: 300px;
 }
 
 .table th {
+    border: 0px;
+    border-spacing: 0px;
     padding: 10px;
     border: 1px solid #ccc;
     width: 300px;

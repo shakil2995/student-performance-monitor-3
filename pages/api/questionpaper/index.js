@@ -11,6 +11,7 @@ export default async function SecretRoute(req, res) {
                 semester: true,
                 section: true,
                 question: true,
+                // _count: true
             },
             // where: {
             //     course_id: 1,
