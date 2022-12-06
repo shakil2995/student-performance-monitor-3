@@ -25,34 +25,7 @@ function postData(props) {
         },
         body: JSON.stringify({
             ...props
-
-            // {
-            //     "uniqueId": "CSE200summer222",
-            //     "course_id": "CSE200",
-            //     "semester": "summer22",
-            //     "section": 2,
-            //     "question": {
-            //         "createMany": {
-            //             "data": [
-            //                 {
-            //                     "question": "q1",
-            //                     "marks": 5,
-            //                     "co": 1
-            //                 },
-            //                 {
-            //                     "question": "q2",
-            //                     "marks": 6,
-            //                     "co": 2
-            //                 }
-            //             ]
-            //         }
-            //     }
-            // }
         })
-        // .then(function (response) {
-        //     console.log(response);
-        // })
-
 
     })
 }
@@ -60,7 +33,6 @@ function QuestionPaper() {
 
     const courseDetails = useFormik({
         initialValues: {
-            // uniqueId: 'unique_id',
             course_id: '',
             semester: '',
             section: '',
@@ -73,6 +45,7 @@ function QuestionPaper() {
             submit: 'Submit'
         },
         onSubmit: values => {
+            values.submit = 'Submitted'
             console.log("Form values", values)
         }
     })
@@ -85,6 +58,7 @@ function QuestionPaper() {
             }
             onSubmit={values =>
                 postData(values)
+
             }>
             <Form className={styles.formContainer}>
                 <div className={styles.formItem}>
@@ -142,7 +116,7 @@ function QuestionPaper() {
                         }
                     }
                 </FieldArray>
-                <button className={styles.submitbutton} type="submit">{courseDetails.values.submit}</button>
+                <button className={styles.submitbutton} type="submit">{courseDetails.values.submit} </button>
             </Form>
         </Formik>
     )

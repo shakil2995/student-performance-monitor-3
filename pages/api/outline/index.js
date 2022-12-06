@@ -52,3 +52,35 @@ export default async function SecretRoute(req, res) {
     // }
 };
 // });
+
+// if (req.method === 'POST') {
+//     let bodyValues = req.body
+//     // console.log(bodyValues.course_id)
+//     let course_id = bodyValues.course_id
+//     let semester = bodyValues.semester
+//     let section = parseInt(bodyValues.section)
+//     let uniqueId = course_id + semester + section
+//     let question = bodyValues.question
+//     // console.log(question)
+//     const newQuestions = bodyValues.questions.data.map((question) => {
+//         return {
+//             question: question.question,
+//             marks: parseInt(question.marks),
+//             co: parseInt(question.co)
+//         }
+//     })
+//     const questionpapers = await QuestionPaper.create({
+//         data: {
+//             uniqueId: uniqueId,
+//             course_id: course_id,
+//             semester: semester,
+//             section: section,
+//             question: {
+//                 createMany: {
+//                     data: newQuestions
+//                 }
+//             }
+//         }
+//     })
+//     res.json({ bodyValues });
+// }

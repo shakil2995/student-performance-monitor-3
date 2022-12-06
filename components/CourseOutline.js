@@ -12,8 +12,8 @@ import Grading from './outlineComponents/Grading'
 
 
 export default function CourseOutline(props) {
-    // console.log(props.props.courseoutline[0].course)
-    let courseOutline = props.props.courseoutline[0]
+    console.log(props.props.course[0])
+    let courseOutline = props.props
     let course = courseOutline.course[0]
     let faculty = courseOutline.faculty[0]
     let objectives = courseOutline.objectives
@@ -23,7 +23,7 @@ export default function CourseOutline(props) {
     let resources = courseOutline.resource
     let department = faculty.department
 
-    // console.log(course)
+    // console.log(props.props.course[0])
 
 
     return (
@@ -55,7 +55,6 @@ export default function CourseOutline(props) {
             <Grading />
             <Schedule schedule={schedule} />
             <Resources resources={resources} />
-            {/* {resourcesTable} */}
         </div>
     )
 }

@@ -18,7 +18,7 @@ const Co = ({ studentData }) => {
     const searchStudent = useFormik({
         initialValues: {
             student_id: '',
-            submit: 'Search',
+            submit: 'Search Co',
         },
         onSubmit: values => {
             // console.log(searchStudent.values.student_id);
@@ -39,7 +39,6 @@ const Co = ({ studentData }) => {
         )
 
     }
-
     return (<>
         <form onSubmit={searchStudent.handleSubmit} className={styles.formContainer}>
             <div className={styles.courseField}>

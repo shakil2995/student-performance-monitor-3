@@ -5,21 +5,25 @@ import CourseOutline from '../../components/CourseOutline';
 
 export const getStaticProps = async (context) => {
     const res = await fetch('http://localhost:3000/api/outline')
-    const questionpapers = await res.json()
+    const outlines = await res.json()
     return {
         props: {
-            questionpapers,
+            outlines,
         }
     }
 }
-
-
-const Viewoutline = ({ questionpapers }) => {
+const Viewoutline = ({ outlines }) => {
+    // console.log(outlines.courseoutline);
     return (<>
-        <div>
-            <h1>Outline</h1>
-            <CourseOutline props={questionpapers} />
-        </div>
+        {
+            outlines.courseoutline.map((outline, index) => (
+                <div key={index}>
+                    <h3 className={styles.topCard}>Outlines</h3>
+                    <CourseOutline props={outline} />
+                </div>
+            ))
+
+        }
     </>
     )
 }
