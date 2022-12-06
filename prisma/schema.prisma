@@ -68,101 +68,87 @@ model Post {
   @@map(name: "post")
 }
 
-// model ObeCourseOutline {
-//   id               Int     @id @default(autoincrement())
-//   universityName   String  @default("Independent University, Bangladesh")
-//   department       String
-//   courseTitle      String
-//   courseCode       String
-//   courseID         String
-//   semester         String
-//   section          Int
-//   credit           Int
-//   courseSummary    String
-//   courseObjective  String
-//   clo1             Boolean
-//   clo2             Boolean
-//   clo3             Boolean
-//   clo4             Boolean
-//   clo5             Boolean
-//   topic1           String
-//   outcome0         String
-//   topic0           String
-//   outcome1         String
-//   topic2           String
-//   outcome2         String
-//   topic3           String
-//   outcome3         String
-//   topic4           String
-//   outcome4         String
-//   topic5           String
-//   outcome5         String
-//   topic6           String
-//   outcome6         String
-//   topic7           String
-//   outcome7         String
-//   topic8           String
-//   outcome8         String
-//   topic9           String
-//   outcome9         String
-//   topic10          String
-//   outcome10        String
-//   topic11          String
-//   outcome11        String
-//   topic12          String
-//   outcome12        String
-//   topic13          String
-//   outcome13        String
-//   topic14          String
-//   outcome14        String
-//   timeFrame        String  @default("1week")
-//   activities0      String
-//   activities1      String
-//   activities2      String
-//   activities3      String
-//   activities4      String
-//   activities5      String
-//   activities6      String
-//   activities7      String
-//   activities8      String
-//   activities9      String
-//   activities10     String
-//   activities11     String
-//   activities12     String
-//   activities13     String
-//   activities14     String
-//   strategy0        String
-//   strategy1        String
-//   strategy2        String
-//   strategy3        String
-//   strategy4        String
-//   strategy5        String
-//   strategy6        String
-//   strategy7        String
-//   strategy8        String
-//   strategy9        String
-//   strategy10       String
-//   strategy11       String
-//   strategy12       String
-//   strategy13       String
-//   strategy14       String
-//   alignment0       String
-//   alignment1       String
-//   alignment2       String
-//   alignment3       String
-//   alignment4       String
-//   alignment5       String
-//   alignment6       String
-//   alignment7       String
-//   alignment8       String
-//   alignment9       String
-//   alignment10      String
-//   alignment11      String
-//   alignment12      String
-//   alignment13      String
-//   alignment14      String
-//   totalQuiz        Int
-//   totalAssignment  Int
-//   totalMid         Int     @default(1)
-//   learningResource String
-// }
+model CourseOutline {
+  id         Int          @id @default(autoincrement())
+  course     Course[]
+  faculty    Faculty[]
+  objectives Objectives[]
+  policy     Policy[]
+  outcome    Outcome[]
+  schedule   Schedule[]
+  resource   Resource[]
+
+  @@map(name: "courseoutline")
+}
+
+model Course {
+  id              Int            @id @default(autoincrement())
+  courseCode      String
+  semester        String
+  section         Int
+  courseTitle     String
+  marks           Int
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "course")
+}
+
+model Faculty {
+  id              Int            @id @default(autoincrement())
+  name            String
+  designation     String
+  department      String
+  email           String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "faculty")
+}
+
+model Objectives {
+  id              Int            @id @default(autoincrement())
+  objective       String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "objectives")
+}
+
+model Policy {
+  id              Int            @id @default(autoincrement())
+  policy          String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "policy")
+}
+
+model Outcome {
+  id              Int            @id @default(autoincrement())
+  outcome         String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "outcome")
+}
+
+model Schedule {
+  id              Int            @id @default(autoincrement())
+  week            String
+  topic           String
+  readings        String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "schedule")
+}
+
+model Resource {
+  id              Int            @id @default(autoincrement())
+  title           String
+  CourseOutline   CourseOutline? @relation(fields: [courseOutlineId], references: [id])
+  courseOutlineId Int?
+
+  @@map(name: "resource")
+}

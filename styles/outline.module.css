@@ -5,7 +5,7 @@
     color: black;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 0 5px #ccc;
+    /* box-shadow: 0 0 5px #ccc; */
     margin: 10px;
     padding: 50px;
 }
@@ -81,4 +81,11 @@
     padding: 10px;
     border: 1px solid #ccc;
     width: 300px;
+}
+
+.iubLogo {
+    width: 15%;
+    height: 15%;
+    margin: 0 auto;
+    display: block;
 }
