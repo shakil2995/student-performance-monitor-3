@@ -16,7 +16,7 @@ export const getStaticProps = async (context) => {
 const Viewoutline = ({ outlines }) => {
     // console.log(outlines.courseoutline);
     return (<div>
-        <Link href="/subpages/addoutline"><button className={style.formButton} >Add Outline</button></Link>
+        {/* <Link href="/subpages/addoutline"><button className={style.formButton} >Add Outline</button></Link> */}
         {
 
             outlines.courseoutline.map((outline, index) => (
