@@ -33,11 +33,11 @@ function AddOutline() {
                 data:
                     [
                         {
-                            courseCode: '1',
-                            semester: '1',
-                            section: '1',
-                            courseTitle: '1',
-                            marks: '1',
+                            courseCode: '',
+                            semester: '',
+                            section: '',
+                            courseTitle: '',
+                            marks: '',
                         }
                     ]
             },
@@ -45,10 +45,10 @@ function AddOutline() {
                 data:
                     [
                         {
-                            name: '1',
-                            designation: '1',
-                            department: '1',
-                            email: '1'
+                            name: '',
+                            designation: '',
+                            department: '',
+                            email: ''
                         }
                     ]
             },
@@ -57,7 +57,7 @@ function AddOutline() {
 
                     [
                         {
-                            objective: '1',
+                            objective: '',
 
                         }
                     ]
@@ -68,7 +68,7 @@ function AddOutline() {
 
                     [
                         {
-                            policy: '1',
+                            policy: '',
                         }
                     ]
             },
@@ -78,7 +78,7 @@ function AddOutline() {
 
                     [
                         {
-                            outcome: '1',
+                            outcome: '',
                         }
                     ]
             },
@@ -88,9 +88,9 @@ function AddOutline() {
 
                     [
                         {
-                            week: '1',
-                            topic: '1',
-                            readings: '1',
+                            week: '',
+                            topic: '',
+                            readings: '',
                         }
                     ]
             },
@@ -100,7 +100,7 @@ function AddOutline() {
 
                     [
                         {
-                            title: '1',
+                            title: '',
                         }
                     ]
             },
@@ -190,6 +190,151 @@ function AddOutline() {
                                                 <div className={styles.question}>
                                                     <label htmlFor="objectives"> objectives : </label>
                                                     <Field className={styles.inputField} type="text" name={`objectives.data[${index}].objective`} />
+
+                                                </div>
+                                                <div>
+                                                    {
+                                                        index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                    }
+                                                    <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                </div>
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <h2>Add Policies</h2>
+                <FieldArray className={styles.formItem} name="policy.data" >
+                    {
+                        (FieldArrayProps) => {
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { policy } = values;
+                            return (
+                                <div className={styles.questionField}>
+                                    {
+                                        policy.data.map((phNumber, index) => (
+                                            <div className={styles.margin} key={index}>
+                                                <div className={styles.question}>
+                                                    <label htmlFor="policy"> policy : </label>
+                                                    <Field className={styles.inputField} type="text" name={`policy.data[${index}].policy`} />
+
+                                                </div>
+                                                <div>
+                                                    {
+                                                        index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                    }
+                                                    <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                </div>
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <h2>Add Outcomes</h2>
+                <FieldArray className={styles.formItem} name="outcome.data" >
+                    {
+                        (FieldArrayProps) => {
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { outcome } = values;
+                            return (
+                                <div className={styles.questionField}>
+                                    {
+                                        outcome.data.map((phNumber, index) => (
+                                            <div className={styles.margin} key={index}>
+                                                <div className={styles.question}>
+                                                    <label htmlFor="policy"> outcome : </label>
+                                                    <Field className={styles.inputField} type="text" name={`outcome.data[${index}].outcome`} />
+
+                                                </div>
+                                                <div>
+                                                    {
+                                                        index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                    }
+                                                    <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                </div>
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <h2>Add Schedule</h2>
+                <FieldArray className={styles.formItem} name="schedule.data" >
+                    {
+                        (FieldArrayProps) => {
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { schedule } = values;
+                            return (
+                                <div className={styles.questionField}>
+                                    {
+                                        schedule.data.map((phNumber, index) => (
+
+                                            <div className={styles.margin} key={index}>
+                                                <div>
+                                                    <div className={styles.question}>
+                                                        <label htmlFor="policy"> Week : </label>
+                                                        <Field className={styles.inputField} type="text" name={`schedule.data[${index}].week`} />
+
+                                                    </div>
+
+                                                    <div className={styles.question}>
+                                                        <label htmlFor="policy"> Topic : </label>
+                                                        <Field className={styles.inputField} type="text" name={`schedule.data[${index}].topic`} />
+
+                                                    </div>
+
+                                                    <div className={styles.question}>
+                                                        <label htmlFor="policy"> readings : </label>
+                                                        <Field className={styles.inputField} type="text" name={`schedule.data[${index}].readings`} />
+
+                                                    </div>
+                                                    <div>
+                                                        {
+                                                            index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
+                                                        }
+                                                        <button className={styles.formAdd} style={{ backgroundColor: "green", color: "white" }} type="button" onClick={() => push('')}>+</button>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )
+                        }
+                    }
+                </FieldArray>
+                <h2>Add Resources</h2>
+                <FieldArray className={styles.formItem} name="resource.data" >
+                    {
+                        (FieldArrayProps) => {
+                            const { push, remove, form } = FieldArrayProps;
+                            const { values } = form;
+                            const { resource } = values;
+                            return (
+                                <div className={styles.questionField}>
+                                    {
+                                        resource.data.map((phNumber, index) => (
+                                            <div className={styles.margin} key={index}>
+                                                <div className={styles.question}>
+                                                    <label htmlFor="policy"> resources : </label>
+                                                    <Field className={styles.inputField} type="text" name={`resource.data[${index}].title`} />
 
                                                 </div>
                                                 <div>
