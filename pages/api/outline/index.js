@@ -23,26 +23,27 @@ export default async function SecretRoute(req, res) {
         res.json({ courseoutline });
     }
     if (req.method === 'POST') {
-        let bodyValues = req.body.courseoutline[0]
-        console.log(bodyValues)
-        let course = bodyValues.course
-        let faculty = bodyValues.faculty
-        let objectives = bodyValues.objectives
-        let policy = bodyValues.policy
-        let outcome = bodyValues.outcome
-        let schedule = bodyValues.schedule
-        let resource = bodyValues.resource
+        let bodyValues = req.body
 
-        const newCourse = bodyValues.course.map((c) => {
+        console.log(bodyValues.course.data)
+        let course = bodyValues.course.data
+        let faculty = bodyValues.faculty.data
+        let objectives = bodyValues.objectives.data
+        let policy = bodyValues.policy.data
+        let outcome = bodyValues.outcome.data
+        let schedule = bodyValues.schedule.data
+        let resource = bodyValues.resource.data
+
+        const newCourse = course.map((c) => {
             return {
                 courseCode: c.courseCode,
                 semester: c.semester,
-                section: c.section,
+                section: parseInt(c.section),
                 courseTitle: c.courseTitle,
                 marks: parseInt(c.marks),
             }
         })
-        const newFaculty = bodyValues.faculty.map((c) => {
+        const newFaculty = faculty.map((c) => {
             return {
                 name: c.name,
                 designation: c.designation,
@@ -50,29 +51,29 @@ export default async function SecretRoute(req, res) {
                 email: c.email,
             }
         })
-        const newObjectives = bodyValues.objectives.map((c) => {
+        const newObjectives = objectives.map((c) => {
             return {
                 objective: c.objective,
             }
         })
-        const newPolicy = bodyValues.policy.map((c) => {
+        const newPolicy = policy.map((c) => {
             return {
                 policy: c.policy,
             }
         })
-        const newOutcome = bodyValues.outcome.map((c) => {
+        const newOutcome = outcome.map((c) => {
             return {
                 outcome: c.outcome,
             }
         })
-        const newSchedule = bodyValues.schedule.map((c) => {
+        const newSchedule = schedule.map((c) => {
             return {
                 week: c.week,
                 topic: c.topic,
                 readings: c.readings,
             }
         })
-        const newResource = bodyValues.resource.map((c) => {
+        const newResource = resource.map((c) => {
             return {
                 title: c.title,
             }
