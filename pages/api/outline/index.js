@@ -6,7 +6,7 @@ export default async function SecretRoute(req, res) {
     if (req.method === 'GET') {
         const courseoutline = await CourseOutline.findMany({
             select: {
-                id: true,
+                // id: true,
                 course: true,
                 faculty: true,
                 objectives: true,
@@ -23,104 +23,104 @@ export default async function SecretRoute(req, res) {
         res.json({ courseoutline });
     }
     if (req.method === 'POST') {
-        let bodyValues = req.body
-        console.log(bodyValues.courseoutline[0].course)
-        // let course = bodyValues.course
-        // let faculty = bodyValues.faculty
-        // let objectives = bodyValues.objectives
-        // let policy = bodyValues.policy
-        // let outcome = bodyValues.outcome
-        // let schedule = bodyValues.schedule
-        // let resource = bodyValues.resource
+        let bodyValues = req.body.courseoutline[0]
+        console.log(bodyValues)
+        let course = bodyValues.course
+        let faculty = bodyValues.faculty
+        let objectives = bodyValues.objectives
+        let policy = bodyValues.policy
+        let outcome = bodyValues.outcome
+        let schedule = bodyValues.schedule
+        let resource = bodyValues.resource
 
-        // const newCourse = bodyValues.course[0].map((c) => {
-        //     return {
-        //         courseCode: c.courseCode,
-        //         semester: c.semester,
-        //         section: c.section,
-        //         courseTitle: c.courseTitle,
-        //         marks: parseInt(c.marks),
-        //     }
-        // })
-        // const newFaculty = bodyValues.faculty[0].map((c) => {
-        //     return {
-        //         name: c.name,
-        //         designation: c.designation,
-        //         department: c.department,
-        //     }
-        // })
-        // const newObjectives = bodyValues.objectives.map((c) => {
-        //     return {
-        //         objective: c.name,
-        //     }
-        // })
-        // const newPolicy = bodyValues.policy.map((c) => {
-        //     return {
-        //         policy: c.policy,
-        //     }
-        // })
-        // const newOutcome = bodyValues.outcome.map((c) => {
-        //     return {
-        //         outcome: c.outcome,
-        //     }
-        // })
-        // const newSchedule = bodyValues.schedule.map((c) => {
-        //     return {
-        //         week: c.week,
-        //         topic: c.topic,
-        //         readings: c.readings,
-        //     }
-        // })
-        // const newResource = bodyValues.resource.map((c) => {
-        //     return {
-        //         title: c.title,
-        //     }
-        // })
+        const newCourse = bodyValues.course.map((c) => {
+            return {
+                courseCode: c.courseCode,
+                semester: c.semester,
+                section: c.section,
+                courseTitle: c.courseTitle,
+                marks: parseInt(c.marks),
+            }
+        })
+        const newFaculty = bodyValues.faculty.map((c) => {
+            return {
+                name: c.name,
+                designation: c.designation,
+                department: c.department,
+                email: c.email,
+            }
+        })
+        const newObjectives = bodyValues.objectives.map((c) => {
+            return {
+                objective: c.objective,
+            }
+        })
+        const newPolicy = bodyValues.policy.map((c) => {
+            return {
+                policy: c.policy,
+            }
+        })
+        const newOutcome = bodyValues.outcome.map((c) => {
+            return {
+                outcome: c.outcome,
+            }
+        })
+        const newSchedule = bodyValues.schedule.map((c) => {
+            return {
+                week: c.week,
+                topic: c.topic,
+                readings: c.readings,
+            }
+        })
+        const newResource = bodyValues.resource.map((c) => {
+            return {
+                title: c.title,
+            }
+        })
 
 
-        // const courseoutline = await CourseOutline.create({
-        //     data: {
-        //         course: {
-        //             createMany: {
-        //                 data: newCourse
-        //             }
-        //         },
-        //         faculty: {
-        //             createMany: {
-        //                 data: newFaculty
-        //             }
-        //         },
-        //         objectives: {
-        //             createMany: {
-        //                 data: newObjectives
-        //             }
-        //         },
+        const courseoutline = await CourseOutline.create({
+            data: {
+                course: {
+                    createMany: {
+                        data: newCourse
+                    }
+                },
+                faculty: {
+                    createMany: {
+                        data: newFaculty
+                    }
+                },
+                objectives: {
+                    createMany: {
+                        data: newObjectives
+                    }
+                },
 
-        //         policy: {
-        //             createMany: {
-        //                 data: newPolicy
-        //             }
-        //         },
+                policy: {
+                    createMany: {
+                        data: newPolicy
+                    }
+                },
 
-        //         outcome: {
-        //             createMany: {
-        //                 data: newOutcome
-        //             }
-        //         },
-        //         schedule: {
-        //             createMany: {
-        //                 data: newSchedule
-        //             }
-        //         },
-        //         resource: {
-        //             createMany: {
-        //                 data: newResource
-        //             }
-        //         },
-        //     }
-        // })
-        // res.json({ courseoutline });
-        res.json({ bodyValues });
+                outcome: {
+                    createMany: {
+                        data: newOutcome
+                    }
+                },
+                schedule: {
+                    createMany: {
+                        data: newSchedule
+                    }
+                },
+                resource: {
+                    createMany: {
+                        data: newResource
+                    }
+                },
+            }
+        })
+        res.json({ courseoutline });
     }
 };
 // });
