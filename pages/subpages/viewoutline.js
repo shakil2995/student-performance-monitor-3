@@ -17,11 +17,12 @@ const Viewoutline = ({ outlines }) => {
     // console.log(outlines.courseoutline);
     return (<div>
         <Link href="/subpages/addoutline"><button className={style.formButton} >Add Outline</button></Link>
+        {/* <h3 className={styles.topCard}>Outlines</h3> */}
         {
 
             outlines.courseoutline.map((outline, index) => (
                 <div key={index}>
-                    <h3 className={styles.topCard}>Outlines</h3>
+
                     <CourseOutline props={outline} />
                 </div>
             ))

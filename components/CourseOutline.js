@@ -27,34 +27,38 @@ export default function CourseOutline(props) {
 
 
     return (
-        <div className={styles.container}>
-            <div >
-                <Image className={styles.iubLogo} src={iubImg} alt="iub Logo" />
-            </div>
-            <h1 className={styles.title}>Independent University, Bangladesh</h1>
-            <h2 className={styles.subtitle}>Department of {department}</h2>
-            <div className={styles.flex}>
-                <div className={styles.outline}>
-                    <h3>Course Outline</h3>
-                    <h4>Course Title: {course.courseTitle}</h4>
-                    <p>Course Code: {course.courseCode}</p>
-                    <p>Course Credit: 3.00</p>
-                    <p>Total Marks: {course.marks}</p>
+        <div>
+            <div className={styles.topCard}>Outline of {course.courseCode}</div>
+            <div className={styles.container}>
+                <div >
+                    <Image className={styles.iubLogo} src={iubImg} alt="iub Logo" />
                 </div>
-                <div className={styles.instructor}>
-                    <h3>Instructor details</h3>
-                    <h4>Name: {faculty.name}</h4>
-                    <p>Designation: {faculty.designation}</p>
-                    <p>Department: {department}</p>
-                    <p>Email : {faculty.email}</p>
+                <h1 className={styles.title}>Independent University, Bangladesh</h1>
+                <h2 className={styles.subtitle}>Department of {department}</h2>
+                <div className={styles.flex}>
+                    <div className={styles.outline}>
+                        <h3>Course Outline</h3>
+                        <h4>Course Title: {course.courseTitle}</h4>
+                        <p>Course Code: {course.courseCode}</p>
+                        <p>Course Credit: 3.00</p>
+                        <p>Total Marks: {course.marks}</p>
+                    </div>
+                    <div className={styles.instructor}>
+                        <h3>Instructor details</h3>
+                        <h4>Name: {faculty.name}</h4>
+                        <p>Designation: {faculty.designation}</p>
+                        <p>Department: {department}</p>
+                        <p>Email : {faculty.email}</p>
+                    </div>
                 </div>
+                <Objectives objectives={objectives} />
+                <Policy policy={policy} />
+                <Outcome outcome={outcome} />
+                <Grading />
+                <Schedule schedule={schedule} />
+                <Resources resources={resources} />
             </div>
-            <Objectives objectives={objectives} />
-            <Policy policy={policy} />
-            <Outcome outcome={outcome} />
-            <Grading />
-            <Schedule schedule={schedule} />
-            <Resources resources={resources} />
         </div>
+
     )
 }
