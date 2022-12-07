@@ -133,48 +133,38 @@
 
 
 .loginContainer {
-  font-size: 1.2rem;
-  padding: 5px;
-  margin: 5px;
-  /* border: 1px solid #858585; */
-  /* background-color: rgba(255, 255, 255, 0.134); */
+  font-size: 1.5rem;
+  padding: 10px;
+  margin: 10px;
   background-color: rgb(1, 187, 41);
   color: rgb(255, 248, 248);
   backdrop-filter: blur(10px);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .loginContainer:hover {
-  font-size: 1.4rem;
-  padding: 5px;
-  margin: 5px;
-  text-decoration: none;
-  color: rgb(1, 187, 41);
-  background-color: rgba(219, 219, 219, 0.986);
-  border-radius: 5px;
+  padding: 15px;
+  /* color: rgb(66, 255, 107); */
+  background-color: rgba(0, 0, 0, 0.986);
   transition: all 0.3s ease;
 }
 
 .signupContainer {
-  font-size: 1.2rem;
-  padding: 5px;
-  margin: 5px;
+  font-size: 1.5rem;
+  padding: 10px;
+  margin: 10px;
   /* border: 1px solid #858585;
   background-color: rgba(255, 255, 255, 0.134); */
-  background-color: rgb(248, 56, 22);
+  background-color: rgb(255, 99, 71);
   color: rgb(252, 252, 252);
   backdrop-filter: blur(10px);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .signupContainer:hover {
-  font-size: 1.4rem;
-  padding: 5px;
-  margin: 5px;
-  text-decoration: none;
-  color: rgb(248, 56, 22);
-  background-color: rgba(219, 219, 219, 0.986);
-  border-radius: 5px;
+  padding: 15px;
+  /* color: rgb(255, 99, 71); */
+  background-color: rgba(23, 23, 23, 0.986);
   transition: all 0.3s ease;
 }
 
@@ -191,4 +181,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+
+.home {
+  font-size: 1.1rem;
+  padding: 6rem;
+  margin: auto 2rem;
+  border: 1px solid #eaeaea;
+  background-color: #484848;
+  border-radius: 20px;
 }
