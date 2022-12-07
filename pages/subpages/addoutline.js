@@ -29,9 +29,6 @@ function AddOutline() {
 
     const courseDetails = useFormik({
         initialValues: {
-            course_id: '1',
-            semester: '1',
-            section: '1',
             course: {
                 data:
                     [
@@ -128,47 +125,74 @@ function AddOutline() {
 
             }>
             <Form className={styles.formContainer}>
+                <h2>Course Details</h2>
                 <div className={styles.formItem}>
-                    <label htmlFor="course_id">Course Id : </label>
-                    <Field className={styles.inputField} type="text" id="course_id" name="course_id" placeholder="eg: CSE-101"
+                    <label htmlFor="course_id">Course Code : </label>
+                    <Field className={styles.inputField} type="text" id="course_code" name={`course.data[0]courseCode`} placeholder="eg: CSE-101"
                     />
                 </div>
 
                 <div className={styles.formItem}>
                     <label htmlFor="semester">Semester : </label>
-                    <Field className={styles.inputField} type="text" id="semester" name="semester" placeholder="Enter your semester"
+                    <Field className={styles.inputField} type="text" id="semester" name={`course.data[0]semester`} placeholder="semester"
                     />
                 </div>
 
                 <div className={styles.formItem}>
                     <label htmlFor="section">Section : </label>
-                    <Field className={styles.inputField} type="text" id="section" name="section" placeholder="Enter your section"
+                    <Field className={styles.inputField} type="number" id="section" name={`course.data[0]section`} placeholder="section"
                     />
                 </div>
-
-                <FieldArray className={styles.formItem} name="questions.data" >
+                <div className={styles.formItem}>
+                    <label htmlFor="section">courseTitle : </label>
+                    <Field className={styles.inputField} type="text" id="section" name={`course.data[0]courseTitle`} placeholder="courseTitle"
+                    />
+                </div>
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Total Marks : </label>
+                    <Field className={styles.inputField} type="number" id="section" name={`course.data[0]marks`} placeholder="Total Marks"
+                    />
+                </div>
+                {/*  faculty  */}
+                <h2>Instructor Information</h2>
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Faculty Name : </label>
+                    <Field className={styles.inputField} type="text" id="section" name={`faculty.data[0]name`} placeholder="name"
+                    />
+                </div>
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Faculty Designation : </label>
+                    <Field className={styles.inputField} type="text" id="section" name={`faculty.data[0]designation`} placeholder="designation"
+                    />
+                </div>
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Faculty Department : </label>
+                    <Field className={styles.inputField} type="text" id="section" name={`faculty.data[0]department`} placeholder="department"
+                    />
+                </div>
+                <div className={styles.formItem}>
+                    <label htmlFor="section">Faculty E-mail : </label>
+                    <Field className={styles.inputField} type="text" id="section" name={`faculty.data[0]email`} placeholder="email"
+                    />
+                </div>
+                <h2>Add Objectives</h2>
+                <FieldArray className={styles.formItem} name="objectives.data" >
                     {
                         (FieldArrayProps) => {
-                            // console.log("FieldArrayProps", FieldArrayProps.form.values);
                             const { push, remove, form } = FieldArrayProps;
                             const { values } = form;
-                            const { questions } = values;
+                            const { objectives } = values;
                             return (
                                 <div className={styles.questionField}>
                                     {
-                                        questions.data.map((phNumber, index) => (
+                                        objectives.data.map((phNumber, index) => (
                                             <div className={styles.margin} key={index}>
                                                 <div className={styles.question}>
-                                                    <label htmlFor="Question"> Question : </label>
-                                                    <Field className={styles.qinputField} as="textarea" name={`questions.data[${index}].question`} />
+                                                    <label htmlFor="objectives"> objectives : </label>
+                                                    <Field className={styles.inputField} type="text" name={`objectives.data[${index}].objective`} />
 
                                                 </div>
                                                 <div>
-                                                    <label htmlFor="marks"> marks : </label>
-                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].marks`} />
-
-                                                    <label htmlFor="co"> co : </label>
-                                                    <Field className={styles.inputField} type="number" name={`questions.data[${index}].co`} />
                                                     {
                                                         index > 0 && <button className={styles.formAdd} style={{ backgroundColor: "red", color: "white" }} type="button" onClick={() => remove(index)}>-</button>
                                                     }
