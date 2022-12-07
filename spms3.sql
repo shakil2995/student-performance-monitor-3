@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Dec 06, 2022 at 05:49 PM
+-- Generation Time: Dec 07, 2022 at 01:09 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -31,10 +31,10 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE IF NOT EXISTS `course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `courseCode` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `semester` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseCode` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semester` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `section` int(11) NOT NULL,
-  `courseTitle` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseTitle` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `marks` int(11) NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -76,10 +76,10 @@ INSERT INTO `courseoutline` (`id`) VALUES
 DROP TABLE IF EXISTS `faculty`;
 CREATE TABLE IF NOT EXISTS `faculty` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `designation` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `department` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `department` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `faculty_courseOutlineId_fkey` (`courseOutlineId`)
@@ -100,17 +100,17 @@ INSERT INTO `faculty` (`id`, `name`, `designation`, `department`, `email`, `cour
 
 DROP TABLE IF EXISTS `obestudent`;
 CREATE TABLE IF NOT EXISTS `obestudent` (
-  `student_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `student_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `courseID` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `courseID` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `section` int(11) NOT NULL,
-  `semester` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semester` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `total` int(11) NOT NULL,
   `CO1` int(11) NOT NULL,
   `CO2` int(11) NOT NULL,
   `CO3` int(11) NOT NULL,
   `CO4` int(11) NOT NULL,
-  `grade` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `grade` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -257,7 +257,7 @@ INSERT INTO `obestudent` (`student_id`, `student_name`, `courseID`, `section`, `
 DROP TABLE IF EXISTS `objectives`;
 CREATE TABLE IF NOT EXISTS `objectives` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `objective` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `objective` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `objectives_courseOutlineId_fkey` (`courseOutlineId`)
@@ -282,7 +282,7 @@ INSERT INTO `objectives` (`id`, `objective`, `courseOutlineId`) VALUES
 DROP TABLE IF EXISTS `outcome`;
 CREATE TABLE IF NOT EXISTS `outcome` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `outcome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `outcome` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `outcome_courseOutlineId_fkey` (`courseOutlineId`)
@@ -307,7 +307,7 @@ INSERT INTO `outcome` (`id`, `outcome`, `courseOutlineId`) VALUES
 DROP TABLE IF EXISTS `policy`;
 CREATE TABLE IF NOT EXISTS `policy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `policy` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `policy` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `policy_courseOutlineId_fkey` (`courseOutlineId`)
@@ -332,27 +332,21 @@ INSERT INTO `policy` (`id`, `policy`, `courseOutlineId`) VALUES
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE IF NOT EXISTS `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uniqueId` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `question` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uniqueId` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `question` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `marks` int(11) NOT NULL,
   `co` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `question_uniqueId_fkey` (`uniqueId`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`id`, `uniqueId`, `question`, `marks`, `co`) VALUES
-(21, 'Cse30011', 'What is a boolean data type ?', 5, 1),
-(22, '10221', '51', 1, 2),
-(23, '10221', '645', 1, 2),
-(24, 'Cse311', 'dxhx', 5, 1),
-(25, 'Cse3d11', 'dxhx', 5, 1),
-(26, 'Cse3dd11', 'dxhx', 5, 1),
-(27, 'Cse3ddd11', 'dxhx', 5, 1),
-(28, 'Cse3dddadd11', 'dxhx', 5, 1);
+(30, 'Cse101Summer221', 'What is a boolean data type ?', 2, 1),
+(29, 'Cse101Summer221', 'Analyze : for(int i =5 ;i<=5;i++) {print (\"Hello world\");}', 8, 3);
 
 -- --------------------------------------------------------
 
@@ -363,26 +357,20 @@ INSERT INTO `question` (`id`, `uniqueId`, `question`, `marks`, `co`) VALUES
 DROP TABLE IF EXISTS `questionpaper`;
 CREATE TABLE IF NOT EXISTS `questionpaper` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uniqueId` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `course_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `semester` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uniqueId` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `course_id` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `semester` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `section` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `questionpaper_uniqueId_key` (`uniqueId`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `questionpaper`
 --
 
 INSERT INTO `questionpaper` (`id`, `uniqueId`, `course_id`, `semester`, `section`) VALUES
-(14, 'Cse30011', 'Cse300', '1', 1),
-(15, '10221', '102', '2', 1),
-(16, 'Cse311', 'Cse3', '1', 1),
-(17, 'Cse3d11', 'Cse3d', '1', 1),
-(18, 'Cse3dd11', 'Cse3dd', '1', 1),
-(19, 'Cse3ddd11', 'Cse3ddd', '1', 1),
-(20, 'Cse3dddadd11', 'Cse3dddadd', '1', 1);
+(21, 'Cse101Summer221', 'Cse101', 'Summer22', 1);
 
 -- --------------------------------------------------------
 
@@ -393,7 +381,7 @@ INSERT INTO `questionpaper` (`id`, `uniqueId`, `course_id`, `semester`, `section
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE IF NOT EXISTS `resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `resource_courseOutlineId_fkey` (`courseOutlineId`)
@@ -418,9 +406,9 @@ INSERT INTO `resource` (`id`, `title`, `courseOutlineId`) VALUES
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE IF NOT EXISTS `schedule` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `week` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `topic` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `readings` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `week` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topic` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `readings` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `courseOutlineId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `schedule_courseOutlineId_fkey` (`courseOutlineId`)
@@ -448,11 +436,11 @@ INSERT INTO `schedule` (`id`, `week`, `topic`, `readings`, `courseOutlineId`) VA
 
 DROP TABLE IF EXISTS `_prisma_migrations`;
 CREATE TABLE IF NOT EXISTS `_prisma_migrations` (
-  `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `checksum` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `checksum` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `finished_at` datetime(3) DEFAULT NULL,
-  `migration_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logs` text COLLATE utf8mb4_unicode_ci,
+  `migration_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `rolled_back_at` datetime(3) DEFAULT NULL,
   `started_at` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `applied_steps_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
