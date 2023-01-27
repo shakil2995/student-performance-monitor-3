@@ -1,4 +1,8 @@
 ## Full-stack CRUD web application made with Next.js and Prisma ORM
+## Features
+### Custom REST api
+### AUTH0 authenticaiton
+### MySql Database
 
 ## Getting Started
 
