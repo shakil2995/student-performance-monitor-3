@@ -1,4 +1,4 @@
-# Freelance work for local clients.
+# :briefcase: Freelance work for local clients.
 ## Full-stack CRUD web application made with Next.js and Prisma ORM
 ## Features
 ### Custom REST API
