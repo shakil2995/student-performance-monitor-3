@@ -1,7 +1,8 @@
+# Freelance work for local clients.
 ## Full-stack CRUD web application made with Next.js and Prisma ORM
 ## Features
-### Custom REST api
-### AUTH0 authenticaiton
+### Custom REST API
+### AUTH0 authentication
 ### MySql Database
 
 ## Getting Started
